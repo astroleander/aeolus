@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP|Noto+Serif+SC|Noto+Serif+TC');
+
+
+
+html, body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    /* background: repeating-linear-gradient(45deg, #FCC568 0, #FCC568 30px, transparent 30px, transparent 60px) */
+}
+
+html {
+  font-family: 'Noto Serif SC','Noto Serif TC','Noto Serif JP', serif;
+}
+
+.html-nav-banner {
+    width: 100%;
+    height: 80px;
+    box-shadow: 0 0 2px 2px #DDD;
+}

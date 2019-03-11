@@ -1,0 +1,32 @@
+// body, html {
+//   height: 100%;
+//   margin: 0px;
+  
+//   font: 400 15px/1.8 "Roboto";
+//   color: #777;
+// }
+
+.flex-middle {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  
+  .card {
+    padding: 20px;
+    box-shadow: 2px 2px 5px #666;
+  }
+}
+
+code {
+  margin: 0px 2px;
+  background: #E3E3E3;
+  border-radius: 2px;
+  padding: 2px 5px;
+  font-family: consolas;
+  color: #662121;
+}
