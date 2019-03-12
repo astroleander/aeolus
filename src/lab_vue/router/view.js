@@ -5,7 +5,7 @@ function importViews (r) {
     const { route, name, paths } = (function(key) {
       const route = key.split('.')[1]
       const paths = route.split('/').splice(1)
-      const name = paths[paths.length-1].replace(/_/g,' ')
+      const name = paths[paths.length-1].replace(/_/g,' ').replace(/-/,' - ')
       return { route, name, paths }
     }) (key)
     view_routes.push({ 
