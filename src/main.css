@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP|Noto+Serif+SC|Noto+Serif+TC');
 
-
-
 html, body{
-    width: 100vw;
-    height: 100vh;
-    margin: 0px;
-    padding: 0px;
-    /* background: repeating-linear-gradient(45deg, #FCC568 0, #FCC568 30px, transparent 30px, transparent 60px) */
+  width: 100%;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  /* background: repeating-linear-gradient(45deg, #FCC568 0, #FCC568 30px, transparent 30px, transparent 60px) */
+}
+
+body {
+  padding: 0px;
 }
 
 html {
