@@ -3,6 +3,7 @@
     get msg from 127.0.0.1:5000 ...
     <p>{{msg}}</p>
     <p v-html="mashaji"></p>
+    <p>{{time}}</p>
   </article>
 </template>
 
@@ -14,6 +15,7 @@ export default {
     return {
       msg: null,
       mashaji: null,
+      time: null
     }
   },
   methods: {
@@ -32,11 +34,20 @@ export default {
         this.mashaji = xhr.response
       }
       xhr.send();
+    },
+    request5000stime() {
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', flask.url('api/time'));
+      xhr.onload = () => {
+        this.time = xhr.response
+      };
+      xhr.send();
     }
   },
   mounted() {
     this.request5000()
     this.anotherrequest5000()
+    this.request5000stime()
   }
 }
 </script>
