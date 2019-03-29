@@ -2,7 +2,7 @@
   <div class="global-container">
     <router-view/>
     <router-link to="/">
-      <div id="floating-button">
+      <div class="floating-button" id="floating-button">
         <p class="cross">+</p>
       </div>
     </router-link>
@@ -22,13 +22,7 @@ export default {
 }
 
 #floating-button {
-  width: 55px;
-  height: 55px;
-
-  border-radius: 50%;
   background: #db4433;
-  box-shadow: 0px 2px 4px #666;
-
   cursor: pointer;
 
   position: fixed;

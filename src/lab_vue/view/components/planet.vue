@@ -12,9 +12,9 @@ export default {
       type: Object,
       default: function() {
         return {
-          x: 50,
-          y: 50,
-          d: 50,
+          x: '50px',
+          y: '50px',
+          d: '50px',
         }
       }
     },
