@@ -4,18 +4,18 @@ function importViews (r) {
   r.keys().forEach(key => {
     const { route, name, paths } = (function(key) {
       const route = key.split('.')[1]
-      const paths = route.split('/').splice(1)
+      const paths = route.replace(/_/g, ' ').split('/').splice(1)
       const name = paths[paths.length-1].replace(/_/g,' ').replace(/-/,' - ')
       return { route, name, paths }
     }) (key)
-    view_routes.push({ 
+    view_routes.push({
+      // full name
       path: route,
-      // full name 
-      name: route.replace(/\//,'').replace(/{\/|_}/g, ' '),
       // last name
+      name: route.replace(/\//, "").replace(/{\/|_}/g, " "),
       meta: { name, paths },
       component: () => r(key)
-    })
+    });
   });
 }
 
