@@ -44,6 +44,7 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.0",
     "axios": "^0.18.0",
     "echarts": "^4.1.0",
     "gsap": "^2.1.2"
