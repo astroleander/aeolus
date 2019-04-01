@@ -45,8 +45,11 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.0",
+    "@types/marked": "^0.6.3",
     "axios": "^0.18.0",
     "echarts": "^4.1.0",
-    "gsap": "^2.1.2"
+    "gsap": "^2.1.2",
+    "lodash": "^4.17.11",
+    "marked": "^0.6.1"
   }
 }
