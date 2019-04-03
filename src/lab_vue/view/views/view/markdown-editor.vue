@@ -54,8 +54,5 @@ export default {
     font-family: 'Monaco', courier, monospace;
     padding: 20px;
   }
-  div{
-
-  }
 }
 </style>
