@@ -3,19 +3,19 @@
     <aeo-card>
       <template slot="header">v-model decorator</template>
       <p>{{ model }}</p>
-      <p>v-model <input v-model="model"/></p>
-      <p>v-model.lazy <input v-model.lazy="model"/></p>
-      <p>v-model.number <input type='number' v-model.number="model"/></p>
-      <p>v-model.trim <input type='number' v-model.trim="model"/></p>
+      <p>v-model        <input v-model="model"/></p>
+      <p>v-model.lazy   <input v-model.lazy="model"/></p>
+      <p>v-model.number <input v-model.number="model" type='number'/></p>
+      <p>v-model.trim   <input v-model.trim="model" type='number'/></p>
     </aeo-card>
 
     <aeo-card>
       <template slot="header">binding v-model with value and input</template>
       <!-- <bind-model-input-test v-model="total"></bind-model-input-test> -->
       <p>子组件的 <code>input</code> 事件的值会更新到 <code>v-model</code> 绑定的父组件</p>
-      <p>子组件:<code>this.$emit('input',this.value)</code></p>
-      <p>子组件:<code>props: ['value']</code></p>
-      <p>父组件:<code>{{ this.code }}</code></p>
+      <p>子组件:  <code>this.$emit('input',this.value)</code></p>
+      <p>子组件:  <code>props: ['value']</code></p>
+      <p>父组件:  <code>{{ this.code }}</code></p>
       <p>即这样一个具有双向绑定的 v-model 组件要满足下列两个要求:
         <ul>
           <li>接受一个 value prop</li>
