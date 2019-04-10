@@ -1,9 +1,12 @@
 <template>
-  <div :class="['aeo-card', ...classes]">
+  <div :class="['aeo-card']">
     <div class="aeo-card-title">
       <slot name="header">Card</slot>
     </div>
-    <slot></slot>
+    <slot 
+      :dmail='dmail'
+      v-bind:labMember="labMember"
+      >{{dmail ? dmail.msg : labMember.firstName}}</slot>
   </div>
 </template>
 
@@ -14,7 +17,14 @@ export default {
    * @see https://vusjs.org/v2/guide/components-props.html
    */
   props: {
-    classes: Array,
+    dmail: Object
+  },
+  data() {
+    return {
+      labMember: {
+        firstName: 'Makise'
+      }
+    }
   }
 }
 </script>
