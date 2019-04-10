@@ -97,11 +97,10 @@ export default {
   methods: {
     handleClick: function(e) {
       console.log('click', e)
-      this.click.push(e)
       if (this.click.length > 8) {
-        this.click = []
-        this.click.push(e)
+        this.click.shift(0)
       }
+      this.click.push(e)
     },
     handleInput: function(v) {
       console.log(v)
