@@ -17,7 +17,7 @@
         <!-- {{cardProps.labMember.firstName}} -->
       </template>
     </aeo-card>
-    <aeo-card :dmail="{msg: 'Kurisu is dead'}">
+    <aeo-card :d-mail="{msg: 'Kurisu is dead'}">
       <template v-slot:header>
         {{cardProps.labMember.firstName}}
       </template>

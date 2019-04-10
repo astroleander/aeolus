@@ -4,9 +4,9 @@
       <slot name="header">Card</slot>
     </div>
     <slot 
-      :dmail='dmail'
+      :dmail='dMail'
       v-bind:labMember="labMember"
-      >{{dmail ? dmail.msg : labMember.firstName}}</slot>
+      >{{dMail ? dMail.msg : labMember.firstName}}</slot>
   </div>
 </template>
 
@@ -16,9 +16,7 @@ export default {
   /**
    * @see https://vusjs.org/v2/guide/components-props.html
    */
-  props: {
-    dmail: Object
-  },
+  props: ['dMail'],
   data() {
     return {
       labMember: {
