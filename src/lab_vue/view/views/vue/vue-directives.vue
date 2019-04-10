@@ -18,7 +18,8 @@
     </section>
 
     <section>
-      <div v-output:foo.a.b="test"></div>
+      <p><code>v-output:foo.a.b="test"</code></p>
+      <div v-output:foo.a.b="test">v-output:foo.a.b="test"</div>
     </section>
   </article>
 </template>
@@ -32,7 +33,7 @@ export default {
       update: '被绑定元素所在的模板更新时使用。无论绑定值是否变化都会更新。通过比较更新前后的绑定值，可以忽略不必要的模板更新。',
       componentUpdated: '被绑定元素所在模板元素完成一次更新周期时调用。',
       unbind: '只调用一次，指令与元素解绑时调用。',
-      test: 'test'
+      test: 'a test'
     }
   },
   directives: {
