@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Fib from '@lv/view/src/algo/leetcode-509-fibonacci'
+import Fib from '@/algo/leetcode-509-fibonacci'
 
 export default {
   data() {
