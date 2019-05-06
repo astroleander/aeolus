@@ -18,6 +18,9 @@
         <input type="submit" @click.prevent="post" value="submit"/>
       </form>
     </section>
+    <section>
+      <button @click="delete_firset_one">delete first one</button>
+    </section>
   </article>
 </template>
 
@@ -27,11 +30,7 @@ import axios from 'axios'
 
 export default {
   data() {
-    return {
-      xhrRequest: null,
-      axiosRequest: null,
-      url: django.url('list/task/'),
-      form: {
+    const standard_form_temp = {
         name: '',
         content: '',
         reward: null,
@@ -40,6 +39,11 @@ export default {
         type: 'Progress',
         create_date: '1978-03-21T01:20:28Z'
       }
+    return {
+      xhrRequest: null,
+      axiosRequest: null,
+      url: django.url('list/task/'),
+      form: standard_form_temp
     }
   },
   methods: {
@@ -70,6 +74,20 @@ export default {
       }).then(res => {
         this.axiosRequest = res.data
       })
+    },
+    delete_firset_one() {
+      const url = this.axiosRequest && this.axiosRequest['results'] && this.axiosRequest['results'][0] && this.axiosRequest['results'][0]['url']
+      if (url) {
+        axios({
+          method: 'delete',
+          url,
+          headers: {},
+        }).then(res => {
+          console.log(res)
+        })
+      } else {
+        console.log('no res there')
+      }
     }
   },
   mounted() {
