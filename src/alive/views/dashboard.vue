@@ -80,17 +80,20 @@ export default {
 <style lang="scss" scoped>
 
 .alive-calendar {
-  margin: 0px 0px 0px 0px;
+  height: 100%;
+  margin: 50px 0px 0px 0px;
+  padding-top: 300px;
+  // padding-top: 40px;
   box-sizing: border-box;
 }
 
 .row {
   display: flex;
-  width: 100vw;
+  // width: 100vw;
   box-sizing: border-box;
-  flex-wrap: nowrap;  
+  flex-wrap: nowrap;
   flex-direction: row;
-  padding: 0 80px;
+  padding: 0px 80px 0px 80px;
 
   .card {
     box-sizing: border-box;
@@ -111,7 +114,6 @@ export default {
     height: 300px;
   }
 }
-
 
 .big-picture-bk {
   min-height: 100vh;

@@ -10,7 +10,7 @@
 -->
   <div>
     <header>
-        <div>A</div>
+        <div class="menu"></div>
     </header>
     <router-view></router-view>
   </div>
