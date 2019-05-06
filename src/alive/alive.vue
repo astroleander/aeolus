@@ -1,30 +1,27 @@
 <template>
-  <article :class='"alive-calendar big-picture-bk"' :style='getBackground'>
-    <section>
-      <h1>{{title}}</h1>
-      <!-- <a href="../lab_react/index.html">React Lab</a> -->
-      <!-- <a href="../index.html">Home</a> -->
-      <!-- <router-view/> -->
-    </section>
-  </article>
+  <router-view></router-view>
 </template>
 
 <script>
-import background from './assets/pictures'
 
 export default {
   name: 'Alive',
   data() {
     return {
-      pics: require('./assets/pictures/index.js'),
-      title: 'Vue Lab'
+      // pics: require('./assets/pictures/index.js'),
     }
   },
   computed: {
-    getBackground: function() {    
-      return "background-image: url(" + background + ");"
-    }
+    
   },
+  methods: {
+    getBackground: function() {
+      
+    },
+  },
+  mounted() {
+    this.getBackground()
+  }
 }
 </script>
 
@@ -32,20 +29,5 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-.alive-calendar {
-  margin: 0px 0px 0px 0px;
-  padding: 4px;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-}
 
-.big-picture-bk {
-  min-height: 100vh;
-  position: relative;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 </style>

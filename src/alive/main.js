@@ -1,14 +1,15 @@
 import Vue from 'vue';
-import router from 'vue-router';
-import store from 'vuex';
-
 import Alive from './alive.vue';
 
-import './style/main.scss'
+import '@/main.css'
+import '@/alive/style/main.scss'
+
+import router from './router';
+import store from 'vuex';
 
 new Vue({
   el: '#alive',
-  // router,
+  router,
   // store,
   // i18n,
   render: h => h(Alive)
