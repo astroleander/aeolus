@@ -25,13 +25,21 @@ html {
   background: repeating-linear-gradient(45deg, #FC5500 0, #FC5500 30px, transparent 30px, transparent 60px);
 }
 
-.v-enter, .v-leave-to {
+.v-enter {
   opacity: 0;
-  transform: translateX(50px);
+  transform: translateX(-30px);
+}
+.v-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 
-.v-enter-active, .v-leave-active {
-  transition: all .3s;
+.v-enter-active, 
+.v-leave-active {
+  transition: all .5s;
 }
 
+#vue-app {
+  width: 100%;
+}
 </style>
