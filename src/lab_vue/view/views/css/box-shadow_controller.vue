@@ -7,6 +7,10 @@
     <section class="controller">
       <p v-for="(each, key) in this['to_box_shadow']" :key="key">
         <input v-model="to_box_shadow[key]"/>
+        <input type="button" name="delete" value="x"
+          @click="deleteItem(to_box_shadow, key)"
+        />
+        
       </p>
       <input type="button" name="add" value="add box-shadow"
         @click="addToBoxShadow"
@@ -39,6 +43,9 @@ export default {
   methods: {
     addToBoxShadow() {
       this.to_box_shadow.push('')
+    },
+    deleteItem(who, idx) {
+      this.to_box_shadow.splice(idx, 1)
     }
   }
 }
