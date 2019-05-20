@@ -9,16 +9,18 @@
       那么这个页面会加载两次
 -->
   <div>
-    <header>
-        <div class="menu"></div>
-    </header>
+    <alive-header></alive-header>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {
+import aliveHeader from './dashboard/header'
 
+export default {
+  components: {
+    aliveHeader
+  }
 }
 </script>
 
