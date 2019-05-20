@@ -21,8 +21,16 @@ header {
   display: flex;
   flex-direction: row;
   align-content: center;
+  height: 50px;
+  width: 100vw;
+  background: white;
+  position: fixed;
+  top: 0;
+  z-index: 999;
   a {
     margin: auto 12px;
   }
 }
+
+
 </style>
