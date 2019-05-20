@@ -10,6 +10,10 @@ article {
   width: 100%;
   min-height: 100vh;
   padding: 4px;
+  &.no-padding {
+    padding: 0px;
+  }
+
 }
 .flex-middle, .flex-cols {
   display: flex;
@@ -37,6 +41,12 @@ article {
     width: 50%;
     min-height: 100px;
   }
+}
+
+.fullscreen {
+  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
 }
 
 code {
@@ -92,4 +102,16 @@ code {
     line-height: 55px;
     font-size: 38px;
   }
+}
+
+pre.code {
+  margin-bottom: 1em;
+  padding: 12px 8px;
+  width: auto;
+  max-height: 600px;
+  overflow: auto;
+  font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+  font-size: 13px;
+  background-color: #eff0f1;
+  border-radius: 3px;
 }
