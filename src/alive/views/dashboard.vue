@@ -1,14 +1,16 @@
 <template>
   <article :class='"alive-calendar big-picture-bk"' :style='bk'>
-    <div class="row statistics">
+    <section class="statistics">
       <alive-statistics class="card" v-model="this.power"></alive-statistics>
       <alive-statistics class="card" v-model="this.power"></alive-statistics>
-    </div>
-    <div class="row core">
+      <alive-statistics class="card" v-model="this.power"></alive-statistics>
+      <alive-statistics class="card" v-model="this.power"></alive-statistics>
+    </section>
+    <section class="core">
       <alive-progress class="card" v-model="this.progress"></alive-progress>
       <alive-todo class="card" v-model="this.todo"></alive-todo>
       <alive-daily class="card" v-model="this.daily"></alive-daily>
-    </div>
+    </section>
   </article>
 </template>
 
@@ -87,7 +89,7 @@ export default {
   box-sizing: border-box;
 }
 
-.row {
+section {
   display: flex;
   // width: 100vw;
   box-sizing: border-box;
@@ -103,6 +105,7 @@ export default {
     flex-grow: 1;
   }
 }
+
 .statistics {
   .card {
     height: 100px;
@@ -123,6 +126,54 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
 }
+// small
+@media screen and (max-width: 1440px) {
+  section {
+    flex-wrap: wrap;
+    .card {
+      width: calc(50% - 8px);
+      max-width: calc(50% - 8px);
+    }
+  }
+  section.statistics {
+    flex-wrap: wrap;
+    .card {
+      width: calc(50% - 8px);
+    }
+  }
+} // small-end-
+// half
+@media screen and (max-width: 800px) {
+  section {
+    flex-wrap: wrap;
+    .card {
+      width: 100%;
+    }
+  }
+  section.statistics {
+    flex-wrap: wrap;
+    .card {
+      width: calc(50% - 8px);
+    }
+  }
+} // half-end-
+// mobile
+@media screen and (max-width: 632px) {
+  section {
+    flex-wrap: wrap;
+    .card {
+      width: 100%;
+    }
+  }
+  section.statistics {
+    flex-wrap: wrap;
+    .card {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+} // half-mobile-
+
 </style>
 
 
