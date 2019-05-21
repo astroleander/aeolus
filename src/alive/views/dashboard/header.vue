@@ -18,6 +18,7 @@ export default {
 
 <style lang="scss" scoped>
 header {
+  box-shadow: 0px 2px 2px #AAAA;
   display: flex;
   flex-direction: row;
   align-content: center;

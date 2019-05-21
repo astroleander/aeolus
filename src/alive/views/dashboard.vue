@@ -87,6 +87,8 @@ export default {
   padding-top: 300px;
   // padding-top: 40px;
   box-sizing: border-box;
+  transition: padding 0.6s;
+
 }
 
 section {
@@ -96,6 +98,7 @@ section {
   flex-wrap: nowrap;
   flex-direction: row;
   padding: 0px 80px 0px 80px;
+  transition: all 0.2s;
 
   .card {
     box-sizing: border-box;
@@ -127,7 +130,7 @@ section {
   background-size: cover;
 }
 // small
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1200px) and (min-width: 801px) {
   section {
     flex-wrap: wrap;
     .card {
@@ -145,6 +148,7 @@ section {
 // half
 @media screen and (max-width: 800px) {
   section {
+    padding: 0px 40px 0px 40px;
     flex-wrap: wrap;
     .card {
       width: 100%;
@@ -156,10 +160,14 @@ section {
       width: calc(50% - 8px);
     }
   }
+  .alive-calendar {
+    padding-top: 40px;
+  }
 } // half-end-
 // mobile
 @media screen and (max-width: 632px) {
   section {
+    padding: 0px;
     flex-wrap: wrap;
     .card {
       width: 100%;
@@ -171,6 +179,9 @@ section {
       max-width: 100%;
       width: 100%;
     }
+  }
+  .alive-calendar {
+    padding-top: 40px;
   }
 } // half-mobile-
 
