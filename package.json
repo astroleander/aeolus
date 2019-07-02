@@ -14,7 +14,7 @@
   },
   "keywords": [],
   "author": "astroleander",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",

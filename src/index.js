@@ -13,7 +13,6 @@ import style from './main.css';
 
 console.log(`I'm a silly entry`);
 console.log(`HtmlWebpackPlugin 里配置 chunks 来实现按需加载 js`);
-// console.log(`非常烦躁的一点是, 不管进入的是哪一个文件, 多个入口文件不论在哪个页面都会加载, 多个页面不应该这样去引入入口文件`);
 
 if (process.env.NODE_ENV !== 'production') {
   console.log('Dev Mode!')
