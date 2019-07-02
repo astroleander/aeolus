@@ -1,10 +1,15 @@
-# aeolus
-
-## Why I need it
-Easy to start, test anything frontend (or server) immediately. Working excellently for procrastination.
-
-## How to start
-### Vue
-Just create your `.vue` file at `src/lab_vur/view/views` directly.
-### React
-等我有空了再学
+# Aeolus 中文文档
+本项目
+```
+Aeolus.src 项目本身是一个非脚手架搭建的 webpack 项目。
+  |- lab-graphics 从 CSS 开始，了解包括 SVG、webGL、Canvas 等一系列东西。这些技术应当尽可能在原生环境下能够运行，我们使用 Vue2.0(和在可预计的未来的3.0)来保持文件结构。
+  |- lab-react 基于 React 技术的 React 技术栈实验页。
+  |- lab-vue 基于 Vue 技术的 Vue 技术栈实验页。
+  |- lab-build 测试 webpack 技术的实验页
+  |- modules
+  |   |- algo 基于 ECMAScript 实现的算法
+  |- configuration
+      |- index 导出目录
+          |- path 项目中的路径
+          |- constant 常量
+```

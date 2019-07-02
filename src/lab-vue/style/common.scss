@@ -1,0 +1,117 @@
+// body, html {
+//   height: 100%;
+//   margin: 0px;
+  
+//   font: 400 15px/1.8 "Roboto";
+//   color: #777;
+// }
+article {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  padding: 4px;
+  &.no-padding {
+    padding: 0px;
+  }
+
+}
+.flex-middle, .flex-cols {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+.flex-middle {
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  
+  .card {
+    padding: 20px;
+    box-shadow: 2px 2px 5px #666;
+  }
+}
+
+.flex-cols {
+  flex-direction: row;
+  flex-wrap: wrap;
+  section {
+    width: 50%;
+    min-height: 100px;
+  }
+}
+
+.fullscreen {
+  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+}
+
+code {
+  margin: 0px 2px;
+  background: #E3E3E3;
+  border-radius: 2px;
+  padding: 2px 5px;
+  font-family: consolas;
+  color: #662121;
+}
+
+.text-block {
+  border-radius: 2px;
+  background: #666;
+}
+
+.floating-button {
+  width: 55px;
+  height: 55px;
+
+  border-radius: 50%;
+  background: #ffc107;
+  box-shadow: 0px 2px 4px #666;
+
+  cursor: pointer;
+  outline: none;
+
+  transition: 0.15s all;
+
+  &:active {
+    background: #333;
+    transition: 0.15s all;
+  }
+
+  * {
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer */
+    -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+    -webkit-user-select: none; /* Chrome, Safari, and Opera */
+    -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+    
+    font-family: 'Roboto';
+    color: white;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    line-height: 55px;
+    font-size: 38px;
+  }
+}
+
+pre.code {
+  margin-bottom: 1em;
+  padding: 12px 8px;
+  width: auto;
+  max-height: 600px;
+  overflow: auto;
+  font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+  font-size: 13px;
+  background-color: #eff0f1;
+  border-radius: 3px;
+}

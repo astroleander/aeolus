@@ -1,0 +1,1 @@
+console.log('[build][entrance.2.js]', 'entrance.2 triggered')

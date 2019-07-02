@@ -1,0 +1,24 @@
+{   
+  "todo-tree.tags": [
+      "TODO",
+      "FIXME"
+    ],
+  "todo-tree.regex": "((//|#|\\*|<!--|;|/\\*|^)\\s*@?($TAGS)|^\\s*- \\[ \\])",
+  "todo-tree.showCountsInTree": true,
+  "todo-tree.defaultHighlight": {
+    "foreground":"white",
+    "font-size": "0.7em",
+},
+  "todo-tree.customHighlight": {
+    "TODO": {
+      "background":"#1565c0",
+      "icon": "beaker",
+      "type": "tag"
+    },
+    "FIXME": {
+      "background":"#fb8c00",
+      "icon": "eye",
+      "type": "tag"
+    }
+}
+}
