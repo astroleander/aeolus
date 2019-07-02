@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import AeoProgressBar from '@lv/view/components/common/ProgressBar'
+import AeoProgressBar from '@v/view/components/common/ProgressBar'
 
 export default {
   data() {

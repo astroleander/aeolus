@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { generateSquareMaze } from '@lv/view/src/generateMaze.js'
+import { generateSquareMaze } from '@v/view/src/generateMaze.js'
 
 const initialfindWay = (map) => {
   // 1.initial initialfindWay map

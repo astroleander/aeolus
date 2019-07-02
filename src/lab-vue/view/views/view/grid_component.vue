@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import DemoGrid from '@lv/view/components/sample/DemoGrid'
+import DemoGrid from '@v/view/components/sample/DemoGrid'
 
 export default {
   components: { DemoGrid },

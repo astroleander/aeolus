@@ -8,8 +8,8 @@
 </template>
 
 <script>
-const { o, b } = require('@lv/view/src/export-test-1.js')
-import FUCK from '@lv/view/src/export-test.js'
+const { o, b } = require('@v/view/src/export-test-1.js')
+import FUCK from '@v/view/src/export-test.js'
 
 export default {
   data: function() {

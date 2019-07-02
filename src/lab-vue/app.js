@@ -1,14 +1,13 @@
 import Vue from 'vue';
-import App from './VueApp.vue';
+import App from './AppVue.vue';
 
-import '@/main.css'
-import '@lv/style/common.scss'
+import '@v/style/common.scss'
 import router from './router'
 
 import "@babel/polyfill";
 
 new Vue({
-  el: '#vue-app',
+  el: '#laboratory-vue',
   router,
   render: h => h(App)
 })

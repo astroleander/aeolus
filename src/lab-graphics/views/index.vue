@@ -8,21 +8,18 @@
         {{name}}
         </span>
       </section>    
-    <li v-for="(view, idx) in view_filter_list" :key="idx">
-      <router-link v-if="view.meta.paths.length === 1" :to="{ path: view.path, name: view.name }">
-        {{ view.meta ? view.meta.name || view.name : view.name }}
-      </router-link>
-      <router-link v-else :to="{ path: view.path, name: view.name }">
-        <template v-for="(path, idx) in view.meta.paths">
+    <template v-for="(view, idx) in view_filter_list">
+      <router-link :key="idx" v-if="view.name !== 'index' || view.meta.name !== 'index'" :to="{ path: view.path, name: view.name }">
+        <li><template v-for="(path, idx) in view.meta.paths">
             {{idx === view.meta.paths.length - 1 ? view.meta.name : '[' + path + ']'}}
-        </template>
+        </template></li>
       </router-link>
-    </li>
+    </template>
   </article>
 </template>
 
 <script>
-import view_routes from '@v/router/view'
+import view_routes from '../router/view'
 
 export default {
   data: function() {

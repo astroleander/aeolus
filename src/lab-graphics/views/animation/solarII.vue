@@ -20,7 +20,7 @@
 
 <script>
 import Vue from 'vue'
-import planet from '@lv/view/components/planet'
+import planet from '@v/view/components/planet'
 
 export default {
   components: { planet },

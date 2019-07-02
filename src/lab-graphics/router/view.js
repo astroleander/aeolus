@@ -19,7 +19,7 @@ function importViews (r) {
   });
 }
 
-importViews(require.context('@v/view/views', true, /\.vue$/, 'lazy'))
+importViews(require.context('@g/views', true, /\.vue$/, 'lazy'))
 
 console.log(view_routes)
 export default view_routes

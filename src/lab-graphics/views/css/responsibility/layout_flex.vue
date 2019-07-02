@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import AeoCard from '@lv/view/components/common/Card'
+import AeoCard from '@v/view/components/common/Card'
 
 export default {
   components: {AeoCard}

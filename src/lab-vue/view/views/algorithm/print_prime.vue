@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import prime from '@lv/view/src/prime' 
+import prime from '@v/view/src/prime' 
 export default {
   data() {
     return {

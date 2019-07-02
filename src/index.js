@@ -9,7 +9,7 @@
  * 2. 默认输出 到 ./dist/main.js
  * 3. 默认 production 和 development 模式
  */
-import style from './main.css';
+import style from './resources/main.css';
 
 console.log(`I'm a silly entry`);
 console.log(`HtmlWebpackPlugin 里配置 chunks 来实现按需加载 js`);

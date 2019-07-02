@@ -8,7 +8,7 @@
 
 <script>
 import Vue from 'vue'
-import CustomInput from '@lv/view/components/sample/CustomInput'
+import CustomInput from '@v/view/components/sample/CustomInput'
 
 export default {
   components: {

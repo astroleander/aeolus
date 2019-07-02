@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import AeoCard from '@lv/view/components/common/Card'
-import CustomInput from '@lv/view/components/sample/CustomInput'
+import AeoCard from '@v/view/components/common/Card'
+import CustomInput from '@v/view/components/sample/CustomInput'
 
 export default {
   components: {

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'VueApp',
+  name: 'LaboratoryVue',
   data() {
     return {
       title: 'Hello Vue!'
