@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import TimerView from './js/views/TimerView.jsx.js'
+import TimerView from './js/views/TimerView.jsx';
 
 
 const App = () => {

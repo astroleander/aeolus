@@ -15,7 +15,7 @@ module.exports = {
   /**
    * 指定了加载的路径
    */
-  context: path.resolve(__dirname, '../'),
+  context: path.resolve(__dirname, '..'),
   /**
    * @TODO 动态入口加载
    * 这里设定的就是一坨一坨的 chunk 了
@@ -26,7 +26,7 @@ module.exports = {
     build2: ['./src/lab-build/entrance.2.js'],
     react: './src/lab-react/app.js',
     vue: './src/lab-vue/app.js',
-    graphics: './lab-graphics/app.js'
+    graphics: './src/lab-graphics/app.js'
   },
   /**
    * @property {path:String} filename entry 里定义的入口文件的输出 bundle 的名称。
@@ -84,7 +84,7 @@ module.exports = {
       '@lg': path.join(__dirname, '..', 'src', 'lab-graphics'),
       '@lb': path.join(__dirname, '..', 'src', 'lab-build'),
       '#res': path.join(__dirname, '..', 'src', 'res'),
-      '#algo$': path.join(__dirname, '..', 'src', 'modules', 'algo'),
+      '#algo': path.join(__dirname, '..', 'src', 'modules', 'algo'),
     },
     /**
      * @property Tell webpack which directories should be searched when resolving modules. 
@@ -192,14 +192,14 @@ module.exports = {
     /**
      * @param arugments[0] {
      *    @property {String} template 作为模板的 html 文件
-     *    @property {String} filename 要导出到的 html 文件
+     *    @property {String} filename 要导出到的 html 文件, 注意如果要硬編碼的话这个地址才是硬编码指向的地址
      *    @property {Array} chunks 对应的入口文件
      *    @property {boolean} hash 哈不哈
      * }
      */
     new HtmlWebPackPlugin({
-      template: './src/lab-build/build-template.html',
-      filename: './build/output.html',
+      template: './src/lab-build/template.html',
+      filename: './lab-build/output.html', 
       chunks: ['build'],
       hash: true,
       minify: {
