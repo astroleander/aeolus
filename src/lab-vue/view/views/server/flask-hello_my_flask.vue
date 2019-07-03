@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {flask} from '@/config'
+import {flask} from '#res/config'
 
 export default {
   data() {

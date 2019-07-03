@@ -90,7 +90,7 @@ export default {
   background-size: cover;
 
   &.background-pic-1 {
-    background-image: url('/resource/assets/p_parallax_1.jpg')
+    background-image: url('/res/assets/p_parallax_1.jpg')
   }
 }
 

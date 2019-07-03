@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import {django} from '@/config'
+import {django} from '#res/config'
 import axios from 'axios'
 
 export default {

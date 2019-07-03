@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import config from '@/config'
+import config from '#res/config'
 
 export default {
   data() {

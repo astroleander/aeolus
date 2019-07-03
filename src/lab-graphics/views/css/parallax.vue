@@ -70,13 +70,13 @@ export default {
   background-size: cover;
 
   &.background-pic-1 {
-    background-image: url('/src/resources/assets/p_parallax_1.jpg')
+    background-image: url('/src/res/assets/p_parallax_1.jpg')
   }
   &.background-pic-2 {
-    background-image: url('../../../resources/assets/p_parallax_2.jpg')
+    background-image: url('/src/res/assets/p_parallax_2.jpg')
   }
   &.background-pic-3 {
-    background-image: url('../../../resources/assets/p_parallax_3.png')
+    background-image: url('/src/res/assets/p_parallax_3.png')
   }
 
 }

@@ -12,5 +12,11 @@ module.exports = {
     url: function(url) {
       return this.path + ':' + this.port + '/' + (url || '')
     }
-  }
+  },
+  entries: [
+    { title: 'Build',     path: '/lab-build/output.html' },
+    { title: 'Graphics',  path: '/lab-graphics/index.html' },
+    { title: 'Vue',       path: '/lab-vue/index.html' },
+    { title: 'React',     path: '/lab-react/index.html' }
+  ]
 }

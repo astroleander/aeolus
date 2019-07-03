@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Config from '@/config'
+import config from '#res/config'
 
 export default {
   data() {
@@ -16,7 +16,7 @@ export default {
   methods: {
     getHTML() {
       const xhr = new XMLHttpRequest()
-      xhr.open('GET', Config.django.url('tdd/home_page/'), true)
+      xhr.open('GET', config.django.url('tdd/home_page/'), true)
       xhr.send()
       xhr.onload = () => {
         this.html = xhr.response
