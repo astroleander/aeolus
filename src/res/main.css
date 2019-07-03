@@ -20,3 +20,16 @@ body {
 html {
   font-family: 'Noto Serif SC','Noto Serif TC','Noto Serif JP', serif;
 }
+
+.matchparent {
+  height: 100%;
+  width: 100%;
+}
+
+.matchrow {
+  width: 100%;
+}
+
+.matchheight {
+  height: 100%;
+}

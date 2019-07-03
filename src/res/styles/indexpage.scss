@@ -1,0 +1,30 @@
+.flex-container {
+    &.row { orientation: row; }
+    &.column { orientation: column; }
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.link {
+    margin: auto 10px;
+    text-align: center;
+    &:active {
+        color: black;
+    }
+}
+
+.waterline-in-flask {
+    animation: animation-waterline-in-flask 0.5s infinite alternate-reverse;
+}
+
+@keyframes animation-waterline-in-flask {
+    from{
+        d: path('m0,50 h30 C50,30 50,72 70,50 h25 v50 H0');
+    }
+    to{
+        d: path('m0,50 h30 C50,68 50,25 70,50 h25 v50 H0');
+    }
+}

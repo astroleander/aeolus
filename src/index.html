@@ -7,10 +7,53 @@
 </head>
 
 <body>
-  <a href="lab-react/index.html">React Laboratory</a>
-  <a href="lab-vue/index.html">Vue Laboratory</a>
-  <a href="lab-graphics/index.html">Graphics Laboratory</a>
-  <a href="lab-build/output.html">Building Laboratory</a>
+  <article class="matchparent">
+    <section class="flex-container row matchparent">
+      <div class="matchrow flex-container row">
+          <svg xmlns="http://www.w3.org/2000/svg" 
+          stroke="#000" 
+          width="400px" height="400px" 
+          viewbox="0 0 100 100" stroke-width="4px" 
+          fill="transparent" stroke-linejoin="round">
+            <defs>
+              <mask id="mask">
+                <g stroke-width="0" fill="#000" >
+                  <path class='waterline-in-flask' fill="#fff" d="m0,50 h25 C50,35 50,65 75,50 h25 v50 H0"/>
+                  <circle class="bubble-in-flask" cx="50" cy="50" r="4"/>
+                  <circle class="bubble-in-flask" cx="60" cy="70" r="4"/>
+                  <circle class="bubble-in-flask" cx="35" cy="60" r="8"/>
+                  <circle class="bubble-in-flask" cx="55" cy="20" r="6"/>
+                  <circle class="bubble-in-flask" cx="25" cy="95" r="9"/>
+                  <circle class="bubble-in-flask" cx="80" cy="75" r="6"/>
+                  <circle class="bubble-in-flask" cx="55" cy="60" r="2"/>
+                  <circle class="bubble-in-flask" cx="40" cy="65" r="2"/>
+                  <circle class="bubble-in-flask" cx="20" cy="80" r="2"/>
+                  <circle class="bubble-in-flask" cx="70" cy="10" r="2"/>
+                  <circle class="bubble-in-flask" cx="56" cy="20" r="2"/>
+                  <circle class="bubble-in-flask" cx="30" cy="62" r="2"/>
+                  <circle class="bubble-in-flask" cx="20" cy="90" r="2"/>
+                  <circle class="bubble-in-flask" cx="25" cy="40" r="1"/>
+                  <circle class="bubble-in-flask" cx="50" cy="60" r="1"/>
+                  <circle class="bubble-in-flask" cx="35" cy="90" r="1"/>
+                </g>
+              </mask>
+            </defs>
+          
+            <path d="m35,2 h30 q-5,0 -5,30 L90,82 Q98,98 80,98 L20,98
+            Q0,98 10,82 L40,32 Q40,2 35,2 h1"/>
+           
+            <path fill="#f50" stroke-width="0" mask="url(#mask)"
+            d="m50,27 L80,77 C90,93 90,93 70,93 L40,93
+            C10,93 10,93 20,77"/>
+            
+          </svg>
+      </div>
+        <a class="link" href="lab-react/index.html">React Laboratory</a>
+        <a class="link" href="lab-vue/index.html">Vue Laboratory</a>
+        <a class="link" href="lab-graphics/index.html">Graphics Laboratory</a>
+        <a class="link" href="lab-build/output.html">Building Laboratory</a>  
+    </section>
+  </article>
 </body>
 
 </html>
