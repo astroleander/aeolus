@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 .flex-container {
     &.row { orientation: row; }
     &.column { orientation: column; }
@@ -8,11 +10,35 @@
     align-content: center;
     flex-wrap: wrap;
 }
+
+.flex-container {
+    background: linear-gradient(270deg, #c93b49, #e5842c);
+    background-size: 400% 400%;
+    animation: gradient-animator 5s ease infinite;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+path.flask-liquid {
+    fill: #c93b49;
+}
+
+@keyframes gradient-animator { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
 .link {
-    margin: auto 10px;
+    color: transparent;
+    margin: 10px;
     text-align: center;
-    &:active {
-        color: black;
+    font-size: 2em;
+
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    &:visited {
+        color: transparent;
     }
 }
 
