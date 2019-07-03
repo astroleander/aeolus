@@ -27,7 +27,8 @@ function animateBubble() {
     let el = e[index]
     let speed = 1 / el.r.baseVal.value
     setInterval(()=>{
-      el.cy.baseVal.value < 0 ? 
+      // 30 差不多在瓶口
+      el.cy.baseVal.value < 30 ? 
         el.cy.baseVal.value = 100 : el.cy.baseVal.value -= speed
     }, 10)
   
