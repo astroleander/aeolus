@@ -12,15 +12,15 @@
 }
 
 .flex-container {
-    background: linear-gradient(270deg, #c93b49, #e5842c);
+    background: linear-gradient(270deg, #c93b49, #212121);
     background-size: 400% 400%;
-    animation: gradient-animator 5s ease infinite;
+    animation: gradient-animator 15s ease infinite;
     background-clip: text;
     -webkit-background-clip: text;
 }
 
 path.flask-liquid {
-    fill: #c93b49;
+    // fill: #c93b49;
 }
 
 @keyframes gradient-animator { 
@@ -30,12 +30,20 @@ path.flask-liquid {
 }
 
 .link {
+    @media screen and (max-height: 450px) {
+        margin: 10px;
+    }
+    @media screen and (min-height: 451px) and (max-height: 600px) {
+        margin: 25px 15px;
+    }
+    @media screen and (min-height: 600px) {
+        margin: 80px 20px;
+    }
+    transition: margin 0.4s ease;
     color: transparent;
-    margin: 10px;
     text-align: center;
-    font-size: 1.6em;
-    font-weight: 600;
-
+    font-size: 1.4em;
+    font-weight: thin;
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
     &:visited {
