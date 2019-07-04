@@ -5,15 +5,15 @@
       </div>
     </section>
     <section class="controller">
-      <p v-for="(each, key) in this['to_box_shadow']" :key="key">
-        <input v-model="to_box_shadow[key]"/>
+      <p v-for="(each, key) in this['box_shadow']" :key="key">
+        <input v-model="box_shadow[key]"/>
         <input type="button" name="delete" value="x"
-          @click="deleteItem(to_box_shadow, key)"
+          @click="deleteItem(box_shadow, key)"
         />
         
       </p>
       <input type="button" name="add" value="add box-shadow"
-        @click="addToBoxShadow"
+        @click="addToBoxShadow()"
       />
     </section>
   </article>
@@ -23,29 +23,28 @@
 export default {
   data() {
     return {
-      from_box_shadow : [
-        '0px 0px 0px 12px #fa8072AA',
-        '0px 0px 0px 24px #fa8072AA',
-        '0px 0px 0px 48px #fa8072AA'
-      ],
-      to_box_shadow: [
-        '0px 0px 0px 12px #fa8072AA',
-        '0px 0px 0px 24px #fa8072AA',
-        '0px 0px 0px 48px #fa8072AA'
+      box_shadow: [
+        '0px 0px 0px 2px #fa807233',
+        '0px 0px 0px 8px #fa807233',
+        '0px 0px 0px 16px #fa807233'
       ],
     }
   },
   computed: {
     getTo() {
-      return this['to_box_shadow'].filter(item => !(item.length === 0)).join(',')
+      return this['box_shadow'].filter(item => !(item.length === 0)).join(',')
     }
   },
   methods: {
     addToBoxShadow() {
-      this.to_box_shadow.push('')
+      let str = this.box_shadow && this.box_shadow[this.box_shadow.length - 1] || ''
+      str = str.replace(/0px\s*0px\s0px\s([0-9]{1,})px/, (...args)=> {
+        return args[0].replace(args[1], Number(args[1]) * 2); 
+      })
+      this.box_shadow.push(str)
     },
     deleteItem(who, idx) {
-      this.to_box_shadow.splice(idx, 1)
+      this.box_shadow.splice(idx, 1)
     }
   }
 }
@@ -62,8 +61,8 @@ export default {
 .view {
   margin: auto;
   background: salmon;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
 }
 
 textarea, input {
