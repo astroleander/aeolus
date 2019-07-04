@@ -10,13 +10,6 @@
 </template>
 
 <script>
-// function setAnimated(count_down) {
-//   setInterval( () => {
-//     count_down = count_down -1
-//   }, 1000)
-//   re
-// }
-
 export default {
   data() {
     return {
