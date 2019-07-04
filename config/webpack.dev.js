@@ -5,6 +5,7 @@ module.exports = merge(common, {
   mode: 'development',
 //   devtool: 'inline-source-map',
   devServer: {
+    port: 1984,
     proxy: {
       '/api/v1/bing' : {
         target: 'http://www.bing.com/',
