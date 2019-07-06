@@ -5,6 +5,10 @@
       <div class="child" :style="`background:${colorGroup[idx]};`" v-for="(repeatel, idx) in Array(32).fill('')" :key="idx">
       </div>
     </section>
+    <section class="one-screen sample-2">
+      <!-- 每一个都是一样的，按照默认填充规则填充 -->
+      <div class="child" :style="`background:${colorGroup[idx]};`" v-for="(repeatel, idx) in Array(32).fill('')" :key="idx"></div>
+    </section>
     <section class="one-screen"></section>
     <section class="one-screen"></section>
     <section class="one-screen"></section>
@@ -25,16 +29,14 @@ export default {
   methods: {  
     onScroll(e) {
       let height = document.body.offsetHeight;
-      console.log('[scroll]')
+      console.log('[scroll]', height);
     }
   },
   mounted() {
-    document.body.addEventListener("onwheel" in document ? "wheel" : "mousewheel", onscroll);
-    this.onResize()
+    document.body.addEventListener("onwheel" in document ? "wheel" : "mousewheel", this.onScroll);
   },
   destroyed() {
-    document.removeEventListener('resize', onResize)
-    document.removeEventListener("onwheel" in document ? "wheel" : "mousewheel", onscroll)
+    document.removeEventListener("onwheel" in document ? "wheel" : "mousewheel", this.onScroll)
   }
 
 }
@@ -42,6 +44,14 @@ export default {
 
 <style lang="scss" scoped>
 .sample-1 {
+  display: grid;
+  grid-template-rows: repeat(8, 12.5%);
+  grid-template-columns: repeat(8, 12.5%);
+  .child {
+    text-align: center;
+  }
+}
+.sample-2 {
   display: grid;
   grid-template-rows: repeat(8, 12.5%);
   grid-template-columns: repeat(8, 12.5%);
