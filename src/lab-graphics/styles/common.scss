@@ -1,7 +1,20 @@
 @import "/src/res/main.css";
 
 article {
-  .fullscreen {
+  &.fullscreen {
     padding: 0;
+
+    .half-height {
+      height: 50vh;
+    }
+
+    .quarter-screen {
+      width: 50vh;
+      height: 50vh;
+    }
+
+    .one-screen {
+      height: 100vh;
+    }
   }
 }

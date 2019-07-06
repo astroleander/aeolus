@@ -1,5 +1,5 @@
 <template>
-  <article class="parallax">
+  <article class="parallax fullscreen">
     <div class="container background background-pic-1">
       <div class="title">
         FISHMAN PARALLAX DEMO
