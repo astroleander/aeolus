@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 .flex-container {
-    &.row { orientation: row; }
-    &.column { orientation: column; }
+    &.row { flex-direction: row; }
+    &.column { flex-direction: column; }
     display: flex;
     justify-items: center;
     justify-content: center;

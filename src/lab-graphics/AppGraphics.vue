@@ -25,7 +25,7 @@ export default {
   opacity: 0;
 }
 .v-enter-active, .v-leave-active {
-  transition: all .5s;
+  transition: all .3s;
 }
 
 #laboratory-graphics {

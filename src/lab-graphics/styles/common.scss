@@ -1,5 +1,14 @@
 @import "/src/res/main.css";
-
+.flex-container {
+  &.row { orientation: row; }
+  &.column { orientation: column; }
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
 article {
   &.fullscreen {
     padding: 0;
