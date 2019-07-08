@@ -22,6 +22,18 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped lang='scss'>
+a {
+  font-size: 1.2em;
+  font-family: 'Roboto', serif;
+  text-decoration: none;
+  color: #212121;
+  transition: all 0.2s;
+  &:active, &:visited{
+    color: #212121;
+  }
+  &:hover {
+    color: #D62800;
+  }
+}
 </style>

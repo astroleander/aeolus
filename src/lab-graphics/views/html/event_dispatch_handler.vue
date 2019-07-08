@@ -21,6 +21,7 @@
           <input type="checkbox" v-model="preventDefault" name="preventDefault ?" />
           <label for="preventDefault">[eventListener] preventDefault (useless)</label>
           <br>
+          <input type="button" v-on:mouseover='(e)=>hoverButton(e, "hover-button")' name="21" value="hover to trigger"/>
           preventDefault 只能阻止默认事件，没别的功能
           stopPropagation 只能阻止冒泡，js DOM 无法控制分发过程
         </section>
@@ -39,31 +40,31 @@ export default {
     };
   },
   methods: {
-    listener(el, decription) {
-      console.log('[@click][listener]', decription, el);
+    listener(el, description) {
+      console.log('[@click][listener]', description, el);
       this.stopPropagation ? el.stopPropagation() : "";
       return false;
+    },
+    hoverButton(el, description) {
+      // this.events[0].e.dispatchEvent(MouseEvent.relatedTarget)
+      console.log('[hover][dispatcher]', description, el);
     }
   },
   mounted() {
-    this.events.push([document.querySelector('#outter-layer').addEventListener('click', (e)=>{
-      console.log('[addEventListener][click] outter', e)
-      this.preventDefault ? e.preventDefault:''
-    }), document.querySelector('#outter-layer')])
-
-    this.events.push([document.querySelector('#middle-layer').addEventListener('click', (e)=>{
-      console.log('[addEventListener][click] middle', e)
-      this.preventDefault ? e.preventDefault:''
-    }), document.querySelector('#outter-layer')])
-
-    this.events.push([document.querySelector('#inner-layer').addEventListener('click', (e)=>{
-      console.log('[addEventListener][click] inner', e)
-      this.preventDefault ? e.preventDefault:''
-    }), document.querySelector('#outter-layer')])
+    let f,e
+    for (const layer of ['outter', 'middle', 'inner']) {
+      e = document.querySelector(`#${layer}-layer`)
+      f = (el)=>{
+          console.log(`[addEventListener][click] ${layer}`, el)
+          this.preventDefault ? e.preventDefault:''
+      }
+      e.addEventListener('click', el => f)
+      this.events.push({e, f})
+    }
   },
   destroyed() {
-    this.events.forEach((f) => {
-      f[1].removeEventListener(f[0])
+    this.events.forEach((pair) => {
+      pair.e.removeEventListener('click', (pair.f))
     })
   }
 };
