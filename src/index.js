@@ -9,7 +9,7 @@
  * 2. 默认输出 到 ./dist/main.js
  * 3. 默认 production 和 development 模式
  */
-import '#res/styles/indexpage.scss'
+import '#res/styles/page-nav.scss'
 import '#res/main.css';
 import '#res/prerender.css';
 

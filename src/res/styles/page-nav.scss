@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-
 .flex-container {
     &.row { flex-direction: row; }
-    &.column { flex-direction: column; }
+    &.col, &.column { flex-direction: column; }
     display: flex;
     justify-items: center;
     justify-content: center;
@@ -19,9 +17,9 @@
     -webkit-background-clip: text;
 }
 
-path.flask-liquid {
+//path.flask-liquid {
     // fill: #c93b49;
-}
+//}
 
 @keyframes gradient-animator { 
     0%{background-position:0% 50%}

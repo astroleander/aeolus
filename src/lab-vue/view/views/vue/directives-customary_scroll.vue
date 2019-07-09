@@ -1,9 +1,9 @@
 <template>
   <article>
-    <h1 class="flex-middle small-box">Scroll me</h1>
+    <h1 class="flex-container column small-box">Scroll me</h1>
     <div
       v-scroll="handleScroll"
-      class="flex-middle box"
+      class="flex-container column box"
     >
       <p>1. bind scroll event to directives</p>
       <p>2. using add <code>handlerScroll</code> callback to scroll event</p>
@@ -66,7 +66,7 @@ h1 {
   height: 30vh;
 }
 
-.flex-middle {
+.flex-container {
   transition: 2.5s all cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 </style>

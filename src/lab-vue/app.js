@@ -1,7 +1,10 @@
 import Vue from 'vue';
 import App from './AppVue.vue';
 
-import '@v/style/common.scss'
+import './styles/common.scss'
+import "#res/styles/index.scss";
+import "#res/main.css";
+
 import router from './router'
 
 import "@babel/polyfill";

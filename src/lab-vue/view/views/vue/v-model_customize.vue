@@ -1,5 +1,5 @@
 <template>
-  <article class="flex-middle">
+  <article class="flex-container column">
     <h4>using v-model on custom component</h4>
     <custom-input v-model="searchText"></custom-input>
     {{searchText}}

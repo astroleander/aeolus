@@ -1,5 +1,5 @@
 <template>
-  <article class="flex-middle">
+  <article class="flex-container column">
     <p>copy from <a href='https://cn.vuejs.org/v2/guide/transitioning-state.html'>https://cn.vuejs.org/v2/guide/transitioning-state.html</a></p>
     <section>
       <svg width="300" height="300">

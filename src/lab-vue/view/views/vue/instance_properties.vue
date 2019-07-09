@@ -1,5 +1,5 @@
 <template>
-  <article class="flex-middle">
+  <article class="flex-container column">
     <h1>{{this.vueInstanceProperties}}</h1>
     <h1>see console</h1>
     <span>more info plz see <a href="https://cn.vuejs.org/v2/cookbook/adding-instance-properties.html">https://cn.vuejs.org/v2/cookbook/adding-instance-properties.html</a></span>

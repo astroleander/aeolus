@@ -1,5 +1,5 @@
 <template>
-  <article class="flex-middle">
+  <article class="flex-container column">
     <section>
       <p class="num">{{count_down}}</p>
     </section>

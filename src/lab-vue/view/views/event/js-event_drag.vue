@@ -1,5 +1,5 @@
 <template>
-  <article class="flex-middle">
+  <article class="flex-container column">
     <section style="display: flex; flex-direction: row;">
       <div id="test" class="div type-test" draggable=true
         @drag="(ev)=> printDrag(ev, '2 drag')"

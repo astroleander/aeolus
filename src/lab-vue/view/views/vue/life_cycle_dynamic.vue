@@ -1,5 +1,5 @@
 <template>
-  <article v-life-cycle:article class="flex-middle">
+  <article v-life-cycle:article class="flex-container column">
     <component v-life-cycle:component v-bind:is="getCard" placeholder="If im input">Test</component>
     <button @click="changeButton">Change component</button>
   </article>

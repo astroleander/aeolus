@@ -1,5 +1,5 @@
 <template>
-  <article class="flex-middle">
+  <article class="flex-container column">
     <aeo-progress-bar></aeo-progress-bar>
     <aeo-progress-bar v-model="test"></aeo-progress-bar>
     {{test.value}} / {{test.total}}

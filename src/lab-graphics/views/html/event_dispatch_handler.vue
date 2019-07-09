@@ -3,17 +3,17 @@
     <section
       id="outter-layer"
       @click="e=>listener(e, 'outter one')"
-      class="matchparent padding-kid"
+      class="match-parent padding-kid"
     >
       <section
         id="middle-layer"
         @click="e=>listener(e, 'middle one')"
-        class="matchparent padding-kid"
+        class="match-parent padding-kid"
       >
         <section
           id="inner-layer"
           @click="e=>listener(e, 'inner one')"
-          class="matchparent padding-kid"
+          class="match-parent padding-kid"
         >
           <input type="checkbox" v-model="stopPropagation" name="stopPropagation ?" />
           <label for="stopPropagation">[@click] stopPropagation</label>

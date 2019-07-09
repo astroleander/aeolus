@@ -1,7 +1,7 @@
 <template>
   <article>
     {{drawTree}}
-    <section class="flex-middle">
+    <section class="flex-container column">
       <div 
         v-for="(row, i) in drawOriginTree" :key="i"
         class="middle-line"
@@ -14,7 +14,7 @@
         </div>
       </div>
     </section>
-    <section class="flex-middle">
+    <section class="flex-container column">
       <div 
         v-for="(row, i) in drawTree" :key="i"
         class="middle-line"

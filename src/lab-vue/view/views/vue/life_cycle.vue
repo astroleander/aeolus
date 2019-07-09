@@ -1,5 +1,5 @@
 <template>
-  <article v-life-cycle class="flex-middle">
+  <article v-life-cycle class="flex-container column">
     {{text}}
     <button @click="changeButton">change the text</button>
   </article>

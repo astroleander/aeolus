@@ -8,7 +8,7 @@
     <section>
       <button @click="shuffle">Shuffle</button>
       <button @click="add">Add</button>
-      <section class="flex-cols">
+      <section class="flex-container row">
       <transition-group tag='ul'>
         <li v-for="item in items" :key="item">
           {{ item }}

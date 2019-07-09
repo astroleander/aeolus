@@ -1,5 +1,5 @@
 <template>
-  <article class="flex-cols">
+  <article class="flex-container row">
     <section>
       <img width="100%" src="https://cn.vuejs.org/images/transition.png"/>
     </section>

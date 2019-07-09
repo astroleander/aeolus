@@ -5,8 +5,9 @@ import router from './router'
 
 import App from './AppGraphics.vue';
 
-import '@v/style/common.scss'
 import './styles/common.scss'
+import "#res/styles/index.scss";
+import "#res/main.css";
 
 import "@babel/polyfill";
 

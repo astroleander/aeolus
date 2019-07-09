@@ -1,5 +1,5 @@
 <template>
-  <article class="flex-middle">
+  <article class="flex-container column">
     <a href="http://jeremyckahn.github.io/stylie/">@powerby github.stylie</a>
     <div id="ball" class="ball stylie"></div>
     <div id="ball2" class="ball stylie"></div>

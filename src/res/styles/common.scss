@@ -1,0 +1,21 @@
+article {
+  padding: 4px;
+  width: 100%;
+  min-height: 100%;
+  &.no-padding {
+    padding: 0px;
+  }
+  &.fullscreen, & .fullscreen {
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+  }
+  .one-screen {
+    height: 100vh;
+  }
+}
+
+.serif {
+    font-family: 'Noto Serif SC','Noto Serif TC','Noto Serif JP', serif;
+}

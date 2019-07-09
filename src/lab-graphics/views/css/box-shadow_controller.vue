@@ -1,5 +1,5 @@
 <template>
-  <article class="flex-cols flex-middle">
+  <article class="flex-container row">
     <section class="gallery">
       <div class="view" :style="{'box-shadow':this.getTo}">
       </div>

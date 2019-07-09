@@ -1,5 +1,5 @@
 <template>
-  <article class="flex-cols">
+  <article class="flex-container row">
     <section>
       <div class="transition-background">
         background - transition, click me
@@ -60,7 +60,7 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-.flex-cols{
+.col{
   box-sizing: border-box;
   section {
     div {

@@ -1,0 +1,25 @@
+code {
+  margin: 0px 2px;
+  background: #E3E3E3;
+  border-radius: 2px;
+  padding: 2px 5px;
+  font-family: consolas;
+  color: #662121;
+}
+
+.text-block {
+  border-radius: 2px;
+  background: #666;
+}
+
+pre.code {
+  margin-bottom: 1em;
+  padding: 12px 8px;
+  width: auto;
+  max-height: 600px;
+  overflow: auto;
+  font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+  font-size: 13px;
+  background-color: #eff0f1;
+  border-radius: 3px;
+}

@@ -1,5 +1,5 @@
 <template>
-  <article class="flex-middle">
+  <article class="flex-container column">
     <div id="animated-number-demo">
       <input v-model.number="number" type="number" step="20">
       <p>{{ animatedNumber }}</p>

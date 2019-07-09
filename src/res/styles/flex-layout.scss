@@ -1,0 +1,18 @@
+.flex-container {
+  &.row { flex-direction: row; }
+  &.column { flex-direction: column; }
+
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.flex-container column {
+  .card {
+    padding: 20px;
+    box-shadow: 2px 2px 5px #666;
+  }
+}
