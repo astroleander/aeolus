@@ -1,6 +1,6 @@
 <template>
-  <article class="flex-container column">
-    <section style="display: flex; flex-direction: row;">
+  <article class="flex-container col fullscreen">
+    <section class="center" style="display: flex; flex-direction: row;">
       <div id="test" class="div type-test" draggable=true
         @drag="(ev)=> printDrag(ev, '2 drag')"
         @dragenter="(ev)=> printDrag(ev, '2 dragenter')"
@@ -26,7 +26,7 @@
     >
     {{list}}
     </section>
-    <section>
+    <section class="center">
       <code>@drag="xxx"</code> equals to <code>v-on:drag="xxx"</code>, which binds defaultly to original HTML drag event by vue directives 
       <p><strong>The point of handle drag/drop events by vue is HOW TO GET AND OPERAT VNODE</strong></p>
     </section>
@@ -88,7 +88,7 @@ export default {
 .drop {
   margin: 10px;
   border: #666 1px solid;
-  width: 90vw;
+  width: 70vw;
   min-height: 40px;
 }
 </style>

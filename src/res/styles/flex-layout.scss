@@ -10,7 +10,10 @@
   flex-wrap: wrap;
 }
 
-.flex-container column {
+.flex-container {
+  .center {
+    width: 50%;
+  }
   .card {
     padding: 20px;
     box-shadow: 2px 2px 5px #666;
