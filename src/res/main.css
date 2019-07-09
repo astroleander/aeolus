@@ -7,6 +7,11 @@ html, body{
   padding: 0px 0px;
 }
 
+/* 修复底边留白的问题，默认是 baseline 模式会导致底部有白线 */
+img {
+  vertical-align: middle;
+}
+
 * {
   box-sizing: border-box;
 }

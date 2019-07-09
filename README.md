@@ -8,8 +8,27 @@ Aeolus.src 项目本身是一个非脚手架搭建的 webpack 项目。
   |- lab-build 测试 webpack 技术的实验页
   |- modules
   |   |- algo 基于 ECMAScript 实现的算法
-  |- configuration
+  |- res
       |- index 导出目录
           |- path 项目中的路径
           |- constant 常量
+```
+
+# 资源文件结构目录
+```
+Aeolus.src
+  |- lab-...
+  |   |- styles
+  |   |    |- common.scss
+  |   |- entrance js file
+  |        |- `import './common.scss'`
+  |
+  |- res
+      |- main.css
+      |- prerender.css
+      |- styles
+           |- index.scss
+           |- button-float.scss
+           |- layout-flex.scss
+           |- layout-grid.scss
 ```
