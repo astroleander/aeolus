@@ -1,10 +1,10 @@
 <template>
   <article class="flex-container row">
-    <section class="gallery">
+    <section class="half gallery">
       <div class="view" :style="{'box-shadow':this.getTo}">
       </div>
     </section>
-    <section class="controller">
+    <section class="half controller">
       <p v-for="(each, key) in this['box_shadow']" :key="key">
         <input v-model="box_shadow[key]"/>
         <input type="button" name="delete" value="x"
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     addToBoxShadow() {
-      let str = this.box_shadow && this.box_shadow[this.box_shadow.length - 1] || ''
+      let str = this.box_shadow && this.box_shadow[this.box_shadow.length - 1] || '0px 0px 0px 1px #fa807233'
       str = str.replace(/0px\s*0px\s0px\s([0-9]{1,})px/, (...args)=> {
         return args[0].replace(args[1], Number(args[1]) * 2); 
       })
@@ -56,10 +56,10 @@ export default {
 
 <style lang="scss" scoped>
 .gallery {
-
 }
+
 .view {
-  margin: auto;
+  margin: 0 auto;
   background: salmon;
   width: 120px;
   height: 120px;
