@@ -1,6 +1,6 @@
 <template>
-  <article>
-    <img :src="this.res" width="100%"/>
+  <article class="fullscreen">
+    <img :src="this.res" width="100%" height="100%"/>
   </article>  
 </template>
 
@@ -26,5 +26,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+img {
+  object-fit: cover;
+}
 </style>
