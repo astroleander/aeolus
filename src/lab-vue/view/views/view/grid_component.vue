@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article class="focus-center">
     <form id="search">
       Search
       <input name="query" v-model="searchQuery"

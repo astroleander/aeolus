@@ -1,6 +1,6 @@
-.flex-container {
+.flex-container, .focus-center {
   &.row { flex-direction: row; }
-  &.column { flex-direction: column; }
+  &.col, &.column { flex-direction: column; }
 
   display: flex;
   justify-items: center;
@@ -10,10 +10,12 @@
   flex-wrap: wrap;
 }
 
+.focus-center {
+  height: 100vh;
+  flex-direction: column;
+}
+
 .flex-container {
-  .center {
-    width: 50%;
-  }
   .card {
     padding: 20px;
     box-shadow: 2px 2px 5px #666;

@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article class="focus-center">
     <input @click="handle" type="button" value="fuck 1">
     <input @click="(e)=> handle(e,2)" type="button" value="fuck 2">
     <input @click="handle($event,3)" type="button" value="fuck 3">

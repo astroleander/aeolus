@@ -1,5 +1,5 @@
 <template>
-  <article class="flex-container column">
+  <article class="focus-center">
     <aeo-progress-bar></aeo-progress-bar>
     <aeo-progress-bar v-model="test"></aeo-progress-bar>
     {{test.value}} / {{test.total}}
@@ -26,7 +26,4 @@ export default {
 </script>
 
 <style>
-article {
-  width: 80%;
-}
 </style>
