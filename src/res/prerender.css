@@ -18,3 +18,7 @@
   text-decoration: none;
   color: black;
 }
+
+.flex-container.item-container {
+  padding: 30px;
+}
