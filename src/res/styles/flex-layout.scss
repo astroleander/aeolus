@@ -1,7 +1,7 @@
 .flex-container, .focus-center {
   &.row { flex-direction: row; }
   &.col, &.column { flex-direction: column; }
-
+  &.start-start { justify-content: start; align-content: flex-start; }
   display: flex;
   justify-items: center;
   justify-content: center;
