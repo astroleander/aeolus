@@ -10,6 +10,7 @@
  * 3. 默认 production 和 development 模式
  */
 import '#res/styles/page-nav.scss'
+import '#res/styles/index.scss'
 import '#res/main.css';
 import '#res/prerender.css';
 

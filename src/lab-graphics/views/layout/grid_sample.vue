@@ -17,8 +17,43 @@
 </template>
 
 <script>
-import { clearTimeout, setTimeout, setInterval } from 'timers';
+/**
+ * @description 附带一个 debouncing 小例子，
+ * @function VueObject.onScroll 以同步 Promise 的方法启动防抖动滚动
+ * @function debouncingScroll 用于注册抖动函数
+ * @function debounce
+ */
+import { setInterval, clearInterval } from 'timers';
+// scroll, height, limit, e.deltaY > 0? 'down' 
+function stickFramesize(scroll, height, limit, forward) {
+    if (forward === 'down') {
+      scroll = scroll + height - scroll % height
+    } else {
+      scroll = scroll - height - scroll % height
+      scroll > 0 ? scroll : 0
+    }
+  return scroll
+}
 
+function debouncingScroll(to, wait = 100) {
+  debounce(() => {
+    window.scrollTo({
+      top: to,
+      behavior: 'smooth'
+    })
+  }, wait)  
+}
+
+let interval;
+function debounce(fn, wait) {
+  if (interval) return
+  console.log('[onscroll][debounce] trigger scroll really')
+  interval = setInterval(()=>{
+    fn()
+    clearInterval(interval)
+    interval = null
+    }, wait)
+}
 
 export default {
   data() {
@@ -32,20 +67,11 @@ export default {
   methods: {  
     onScroll(e) {
       // e.preventDefault();
-      let height =  window.innerHeight
+      let limit = document.body.offsetHeight;
+      let height = window.innerHeight
       let scroll = document.documentElement.scrollTop
-      if (e.deltaY > 0) {
-        window.scrollTo({
-          top: scroll + height,
-          behavior: 'smooth'
-        })
-      } else {
-        window.scrollTo({
-          top: (scroll - height > 0 ? scroll - height : 0),
-          behavior: 'smooth'
-        })
-      }
-      return false
+      Promise.resolve(stickFramesize(scroll, height, limit, e.deltaY > 0? 'down' : 'up'))
+        .then(res => debouncingScroll(res, 200))
     }
   },
   mounted() {
