@@ -2,6 +2,7 @@ const path = require('path');
 
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtactPlugin = require('mini-css-extract-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const { VueLoaderPlugin } = require('vue-loader')
 
@@ -216,6 +217,9 @@ module.exports = {
       filename: '[name].[hash].css',
       chunkFilename: '[id].[hash].css'
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerPort: 1989,
+    })
   ]
 }
