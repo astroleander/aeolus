@@ -3,7 +3,8 @@ const view_routes = []
 function importViews (r) {
   r.keys().forEach(key => {
     const { route, name, paths } = (function(key) {
-      const route = key.split('.')[1]
+      console.log(key)
+      const route = key.replace(/./, '')
       const paths = route.replace(/_/g, ' ').split('/').splice(1)
       const name = paths[paths.length-1].replace(/_/g,' ').replace(/-/,' - ')
       return { route, name, paths }
