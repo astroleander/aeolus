@@ -15,6 +15,27 @@ article {
     height: 100vh;
   }
 }
+.button {
+  &:focus {
+    outline: 0;
+  }
+  font-size: 1.5em;
+  margin: 8px;
+  border: none;
+  border-radius: 2px;
+  padding: 16px 80px;
+  background: #8bc34a;
+  color: white;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-align: center;
+  position: relative;
+  &:active {
+    top: 0.1em;
+  }
+}
 
 .serif {
     font-family: 'Noto Serif SC','Noto Serif TC','Noto Serif JP', serif;
