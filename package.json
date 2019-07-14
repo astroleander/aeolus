@@ -52,6 +52,7 @@
     "lodash": "^4.17.11",
     "marked": "^0.6.3",
     "tar": "^4.4.10",
+    "three": "^0.106.2",
     "webpack-bundle-analyzer": "^3.3.2"
   }
 }
