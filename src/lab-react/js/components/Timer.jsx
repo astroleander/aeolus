@@ -22,10 +22,18 @@ class Timer extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        Seconds: {this.state.seconds}
-      </div>
+    /**
+     * 两者完全等价
+     */
+    // return (
+    //   <div>
+    //     Seconds: {this.state.seconds}
+    //   </div>
+    // )
+    return React.createElement(
+      'div',
+      {},
+      `Seconds: ${this.state.seconds}`
     )
   }
 }
