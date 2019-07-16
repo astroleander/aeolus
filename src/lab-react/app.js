@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import TimerView from './js/views/TimerView.jsx';
 import TodoApp from './js/views/TodoApp'
 import Game from './js/TicTacToe'
+import LifecycleContainer from './components/lifecycle'
+
 const App = () => {
 	return (
 		<div>
@@ -11,6 +13,7 @@ const App = () => {
 			<TimerView title="React Lab"/>
 		    <Game />
 			<TodoApp />
+			<LifecycleContainer />			
 		</div>
 	);
 };
