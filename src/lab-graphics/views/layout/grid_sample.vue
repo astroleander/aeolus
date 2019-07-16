@@ -292,7 +292,7 @@ export default {
     document.body.addEventListener("onwheel" in document ? "wheel" : "mousewheel", this.onScroll, false);
   },
   destroyed() {
-    document.removeEventListener("onwheel" in document ? "wheel" : "mousewheel", this.onScroll, false)
+    document.body.removeEventListener("onwheel" in document ? "wheel" : "mousewheel", this.onScroll)
   }
 }
 </script>
