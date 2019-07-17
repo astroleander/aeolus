@@ -1,13 +1,13 @@
 <template>
   <article id="dashboard">
-    <section>Filter: <input type="text" v-focus v-model="list_filter"/><del>(not supported to search tag)</del>support!</section>
+    <section>Filter: <input type="text" v-focus v-model="list_filter"/></section>
     <section class="tags-container">
       <span class="tag del" @click="setTag('')"> x </span>
       <span v-for="(name, idx) in filter_key_words" :key="idx"
         class="tag" @click="setTag(name)">
         {{name}}
         </span>
-      </section>    
+    </section>
     <template v-for="(view, idx) in view_filter_list">
       <router-link :key="idx" v-if="view.name !== 'index' || view.meta.name !== 'index'" :to="{ path: view.path, name: view.name }">
         <li><template v-for="(path, idx) in view.meta.paths">
