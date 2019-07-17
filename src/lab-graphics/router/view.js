@@ -4,7 +4,7 @@ function importViews (r) {
   r.keys().forEach(key => {
     const { route, name, paths } = (function(key) {
       const route = key.split('.').slice(1, -1).join('.')
-      const paths = route.replace(/_/g, ' ').split('/').splice(1)
+      const paths = route.replace(/_/g, ' ').replace(/\./g, '/').split('/').splice(1)
       const name = paths[paths.length-1].replace(/_/g,' ').replace(/-/,' - ')
       return { route, name, paths }
     }) (key)
