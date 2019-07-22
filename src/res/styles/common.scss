@@ -35,6 +35,11 @@ article {
   &:active {
     top: 0.1em;
   }
+  &.mini {
+    font-size: 0.7em;
+    margin: 4px;
+    padding: 4px 12px;
+  }
 }
 
 .serif {
