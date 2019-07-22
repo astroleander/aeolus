@@ -154,11 +154,20 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|jpg|gif)$/,
         use: [{
           loader: 'url-loader',
           options: {}
         }]
+      },
+      // vue-svg-loader 会对 svg 进行压缩和优化，并不适用于对 svg 要进行深度操作的场合
+      {
+        test: /\.icon\.svg$/,
+        loader: 'vue-svg-loader'
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
       }
     ]
   },
