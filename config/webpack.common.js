@@ -6,8 +6,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 const { VueLoaderPlugin } = require('vue-loader')
 
-const entriesConfig = require('./entry.config.js')
-const htmlWebPackPlugins = (configs) => configs.map(config => new HtmlWebPackPlugin(config))
+// const entriesConfig = require('./entry.config.js')
+// const htmlWebPackPlugins = (configs) => configs.map(config => new HtmlWebPackPlugin(config))
 
 /**
  * NOT update until re-compile

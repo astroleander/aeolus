@@ -14,9 +14,8 @@ import '#res/styles/index.scss'
 import '#res/main.css';
 import '#res/prerender.css';
 
-console.log(`I'm a silly entry`);
-console.log(`HtmlWebpackPlugin 里配置 chunks 来实现按需加载 js`);
-
+// import * as Entry from './../config/entry.config.js';
+// console.log(Entry.path())
 if (process.env.NODE_ENV !== 'production') {
   console.log('Dev Mode!')
 }

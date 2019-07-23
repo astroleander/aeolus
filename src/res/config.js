@@ -17,6 +17,7 @@ module.exports = {
     { title: 'Build',     path: '/lab-build/output.html' },
     { title: 'Graphics',  path: '/lab-graphics/index.html' },
     { title: 'Vue',       path: '/lab-vue/index.html' },
-    { title: 'React',     path: '/lab-react/index.html' }
+    { title: 'React',     path: '/lab-react/index.html' },
+    { title: 'JS',        path: '/lab-js/index.html' }
   ]
 }
