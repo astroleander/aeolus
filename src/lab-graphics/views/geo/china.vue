@@ -15,8 +15,9 @@ const clearText = (map) => {
   })
 }
 function mouseoverSvg(e, el) {
+  // 从浏览器外移动进来的 fromElement 是 null
   if (
-    (e.fromElement.tagName === 'path' || e.fromElement.tagName === 'text' ) &&
+    e.fromElement && e.fromElement.tagName === 'path' &&
     e.toElement.tagName === 'svg'
    ) {
     console.log('trigger', e.fromElement.tagName)
@@ -32,7 +33,6 @@ function mouseoverPath(e, el) {
   let text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
   text.setAttribute('x', nodebox.x + nodebox.width / 2);
   text.setAttribute('y', nodebox.y + nodebox.height / 2);
-  text.setAttribute('fill', '#000');
   text.setAttribute('id', `text-${el.getAttribute('title')}`);
   text.textContent = el.getAttribute('title');
   let map = document.getElementById('svg-china-map');
@@ -94,6 +94,10 @@ export default {
     &:hover {
       fill: lightblue;
     }
+  }
+  text {
+    pointer-events: none;
+    fill: #333;
   }
 }
 </style>
