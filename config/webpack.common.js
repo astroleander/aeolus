@@ -6,6 +6,9 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 const { VueLoaderPlugin } = require('vue-loader')
 
+const entriesConfig = require('./entry.config.js')
+const htmlWebPackPlugins = (configs) => configs.map(config => new HtmlWebPackPlugin(config))
+
 /**
  * NOT update until re-compile
  * with webpack-merge
@@ -22,12 +25,18 @@ module.exports = {
    * 这里设定的就是一坨一坨的 chunk 了
    */
   entry: {
-    home: './src/index.js',
+    /**
+     * 一个关于动态加载入口文件的实验
+     * 但是鉴于不怎么会再取增加入口了，我决定不使用它
+     */
+    // ...entriesConfig.entries(),
     build: ['./src/lab-build/entrance.js', './src/lab-build/entrance.1.js'],
     build2: ['./src/lab-build/entrance.2.js'],
+    home: './src/index.js',
     react: './src/lab-react/app.js',
     vue: './src/lab-vue/app.js',
-    graphics: './src/lab-graphics/app.js'
+    graphics: './src/lab-graphics/app.js',
+    js: './src/lab-js/app.js'
   },
   /**
    * @property {path:String} filename entry 里定义的入口文件的输出 bundle 的名称。
@@ -178,6 +187,11 @@ module.exports = {
     /**
      * 关于 HtmlWebPackPlugin 的简略使用操作请看最后对 lab-build 模块进行配置的说明
      */
+    /**
+     * 下面这行是一个关于动态加载入口文件的实验
+     * 但是鉴于不怎么会再取增加入口了，我决定不使用它
+     */
+    // ...htmlWebPackPlugins(entriesConfig.htmlWebPackPlugins()),
     new HtmlWebPackPlugin({
       template: './src/index.html', 
       filename: './index.html',     // 
@@ -198,11 +212,18 @@ module.exports = {
       filename: './lab-graphics/index.html',
       chunks: ['graphics']
     }),
-
+    new HtmlWebPackPlugin({
+      template: './src/lab-js/index.html',
+      filename: './lab-js/index.html',
+      chunks: ['js']
+    }),
+    
     /**
      * @param arugments[0] {
      *    @property {String} template 作为模板的 html 文件
      *    @property {String} filename 要导出到的 html 文件, 注意如果要硬編碼的话这个地址才是硬编码指向的地址
+     *        比如 filename: './lab-js/index.html' 
+     *        则意味着最后在项目中该入口文件的地址就是 'http://localhost:1984/lab-js/index.html'
      *    @property {Array} chunks 对应的入口文件
      *    @property {boolean} hash 哈不哈
      * }
@@ -210,12 +231,12 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/lab-build/template.html',
       filename: './lab-build/output.html', 
-      chunks: ['build'],
+      chunks: ['build', 'build2'],
       hash: true,
       minify: {
         collapseInlineTagWhitespace: true
       },
-      excludeChunks: ['home', 'react', 'vue', 'graphics']
+      // excludeChunks: ['home', 'react', 'vue', 'graphics']
     }),
 
     /**
