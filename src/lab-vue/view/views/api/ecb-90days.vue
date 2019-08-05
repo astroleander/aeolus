@@ -7,7 +7,14 @@
 
 <script>
 import axios from 'axios'
-import charts from 'echarts'
+// import charts from 'echarts'
+/**
+ * 按需引入后,这个包的体积从4m下降到了1.2mb,
+ * echarts 的部分仅占 800kb
+ */
+import charts from 'echarts/lib/echarts'
+import 'echarts/lib/component/tooltip'
+import 'echarts/lib/chart/line'
 
 export default {
   data: function() {
