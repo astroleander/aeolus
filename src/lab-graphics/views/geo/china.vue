@@ -8,7 +8,7 @@
 
 <script>
 import ChinaMap from '@/res/assets/china.svg'
-import { setTimeout } from 'timers';
+
 const clearText = (map) => {
   Array.from(map.getElementsByTagName('text')).forEach(e => {
     map.removeChild(e);
