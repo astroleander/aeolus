@@ -7,7 +7,7 @@
 
 <script>
 import * as THREE from 'three'
-import 'three-orbitcontrols'
+import OrbitControls from 'three-orbitcontrols'
 import map from '@/res/assets/china.svg'
 function d3threeD(exports) {
   const DEGS_TO_RADS = Math.PI / 180;
@@ -352,7 +352,7 @@ export default {
       this.renderer.setPixelRatio(window.devicePixelRatio);
       this.renderer.setSize(window.innerWidth, window.innerHeight);
 
-      let controls = new THREE.OrbitControls(this.camera, this.renderer.domElement)
+      let controls = new OrbitControls(this.camera, this.renderer.domElement)
 
       container.appendChild(this.renderer.domElement)
       window.addEventListener( 'resize', this.onWindowResize, false );
