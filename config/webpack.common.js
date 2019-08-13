@@ -163,6 +163,14 @@ module.exports = {
         ]
       },
       {
+        test: /\.(gltf)$/,
+        use: [
+          {
+            loader: "gltf-webpack-loader"
+          }
+        ]
+      },
+      {
         test: /\.(png|jpg|gif)$/,
         use: [{
           loader: 'url-loader',
