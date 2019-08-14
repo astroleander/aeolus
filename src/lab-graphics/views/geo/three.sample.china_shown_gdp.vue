@@ -386,6 +386,7 @@ export default {
       let controls = new OrbitControls(this.camera, this.renderer.domElement)
 
       container.appendChild(this.renderer.domElement)
+
       window.addEventListener( 'resize', this.onWindowResize, false );
       requestAnimationFrame(this.animate)
     },
@@ -406,16 +407,6 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-#container {
-  overflow: hidden;
-}
+
 </style>
-<style>
-canvas { 
-     height: 100%; 
-     width: 100%; 
-     display: block;
-     background: #222;
-    } 
- 
-</style>
+
