@@ -1,9 +1,9 @@
 import * as THREE from 'three'
-import './loader/GLTFLoader'
 import ComposeMaterial from './compose_material'
 import HatchMaterial from './hatch_material'
 import room from './models/room.gltf'
-
+// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import GLTFLoader from 'three-gltf-loader'
 class SceneManager {
   constructor(element) {
     // super();
@@ -79,9 +79,8 @@ class SceneManager {
   }
   loadScene() {
     console.log('[scene generator][loadScene]')
-    let modelLoader = new THREE.GLTFLoader();
+    let modelLoader = new GLTFLoader();
     modelLoader.load(room, (gltf) => {
-      // const sceneMesh = new THREE.Mesh(geo);
       this.objectScene.add(gltf.scene)
     });
   }
@@ -112,7 +111,7 @@ class SceneManager {
     return;
   }
   initRenderer() {
-    console.log('[scene generator][initRenderer]')
+    console.log('[scene generator][initRenderer]', this.width, this.height);
     this.renderer.setSize(this.width, this.height);
     this.element.appendChild(this.renderer.domElement);
     return;
@@ -144,8 +143,11 @@ class SceneManager {
     console.log('[scene generator][rendererDepth]')
     this.initObjectScene.overrideMaterial = this.depthMaterial;
     this.renderer.setClearColor('#000000');
-    this.renderer.clearTarget(this.depthTexture, true, true);
-    this.renderer.render(this.objectScene, this.objectCamera, this.depthTexture);
+    this.renderer.setRenderTarget(this.depthTexture, true, true);
+    const target = new THREE.WebGLRenderTarget(this.width,this.height);
+    target.texture = this.depthTexture;
+    this.renderer.setRenderTarget(target)
+    this.renderer.render(this.objectScene, this.objectCamera);
   }
   rendererNormal() {
     console.log('[scene generator][rendererNormal]')

@@ -82,11 +82,12 @@ class HatchMaterial extends THREE.ShaderMaterial {
   constructor() {
     console.log(HatchMaterial.uniforms)
     for (let obj in HatchMaterial.uniforms) {
-      HatchMaterial.uniforms[obj].magFilter = THREE.NearestFilter;
-      HatchMaterial.uniforms[obj].minFilter = THREE.NearestFilter;
-      HatchMaterial.uniforms[obj].wrapS = THREE.RepeatWrapping;
-      HatchMaterial.uniforms[obj].wrapT = THREE.RepeatWrapping;
+      HatchMaterial.uniforms[obj].value.magFilter = THREE.NearestFilter;
+      HatchMaterial.uniforms[obj].value.minFilter = THREE.NearestFilter;
+      HatchMaterial.uniforms[obj].value.wrapS = THREE.RepeatWrapping;
+      HatchMaterial.uniforms[obj].value.wrapT = THREE.RepeatWrapping;
     }
+    console.log(HatchMaterial.uniforms)
     super({
       // attributes: HatchMaterial.attributes,
       uniforms: HatchMaterial.uniforms,

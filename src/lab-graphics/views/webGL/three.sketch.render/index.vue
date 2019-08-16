@@ -1,6 +1,6 @@
 <template>
   <article class="fullscreen">
-    <div id="container" class="fullscreen">
+    <div id="container">
     </div>
   </article>
 </template>
@@ -13,8 +13,10 @@ export default {
   } },
   mounted() {
     let container = document.getElementById('container');
+    container.style.height = window.innerHeight + 'px';
+    console.log(container,container.style.height)
     this.manager = new SceneManager(container)
-    this.render()
+    this.render();
   },
   methods: {
     render() {
@@ -26,16 +28,4 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-#container {
-  overflow: hidden;
-}
-</style>
-<style>
-canvas { 
-     height: 100%; 
-     width: 100%; 
-     display: block;
-     /* background: #222; */
-    } 
- 
 </style>
