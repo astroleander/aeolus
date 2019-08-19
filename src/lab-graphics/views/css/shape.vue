@@ -48,6 +48,7 @@
     border-radius: 50%;
   }
   .square {
+    margin: 10px;
     // square do not need any transform
   }
   .triangle {
