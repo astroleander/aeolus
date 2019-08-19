@@ -11,6 +11,9 @@ article {
     width: 100%;
     min-height: 100vh;
   }
+  &.matchwidth, & .matchwidth {
+    width: 100%;
+  }
   .one-screen {
     height: 100vh;
   }
