@@ -2,7 +2,7 @@
   <article id="dashboard">
     <section>Filter: <input type="text" v-focus v-model="list_filter"/></section>
     <section class="tags-container">
-      <span class="tag del" @click="setTag('')"> x </span>
+      <span class="tag del" @click="setTag('')"> × </span>
       <span v-for="(name, idx) in filter_key_words" :key="idx"
         class="tag" @click="setTag(name)">
         {{name}}
@@ -75,8 +75,8 @@ export default {
 .tag {
   font-family: Arial, Helvetica, sans-serif;
   display: inline-block;
-  margin: 4px;
-  padding: 4px;
+  margin: 2px;
+  padding: 1px 10px;
   border-radius: 1px;
   border: 1px solid #999;
   color: #999;
@@ -87,11 +87,12 @@ export default {
     border: 1px solid #333;
     color: #333;
   }
-
-  &.del {
-    padding: 4px 12px;
-  }
+  
+  // &.del {
+  //   padding: 4px 12px;
+  // }
 }
+
 // .tags-container {
 //   box-sizing: border-box;
 //   height: 20px;
