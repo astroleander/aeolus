@@ -21,6 +21,7 @@
 <script>
 import * as THREE from 'three'
 import OrbitControls from 'three-orbitcontrols'
+import { MeshPhysicalMaterial, Group } from 'three';
 
 function generateGeometry() {
   const ret = []
@@ -43,6 +44,7 @@ export default {
       shapes: [], 
       lights: {},
       helpers: {},
+      skeleton: null,
     } 
   },
   mounted() {
@@ -54,17 +56,25 @@ export default {
       this.MakeRendererGreatAgain();
       this.MakeCanvasGreatAgain();
       this.MakeCameraGreatAgain();
+      
       this.MakeSceneGreatAgain();
       // |- MakeLightGreatAgain();
-      // |- MakeHelperGreatAgin();
-      //        |- FakeAxesHelper();
-      //        |- FakeBoxHelper();
-      //        |- FakeBox3Helper();
-      //
+      
+      this.MakeMeshGreatAgain();
+      // |- RussiaSkeletonInterference();
+      // |- RussiaSkinInterference();
+
+      this.MakeHelperGreatAgain();
+      // |- FakeAxesHelper();
+      // |- FakeBoxHelper();
+      // |- FakeBox3Helper();
+      // |- 
+      // |- 
+      // |-
       // TODO: PositionalAudioHelper
       // TODO: PlaneHelper
       // 
-      this.MakeMeshGreatAgain();
+
       this.MAGA();
     },
     MakeCanvasGreatAgain() {
@@ -90,7 +100,6 @@ export default {
       // this.scene.fog = new THREE.Fog( 0x040306, 10, 300 );
 
       this.MakeLightGreatAgain();
-      this.MakeHelperGreatAgain();
     },
     MakeLightGreatAgain() {
       let sphere = new THREE.SphereBufferGeometry( 0.5, 16, 8 );
@@ -117,36 +126,62 @@ export default {
       this.scene.add(directionalLight);
       this.lights.directionalLight = directionalLight;
 
-      const spotLight = new THREE.SpotLight(0xfffff, 2);
+      const spotLight = new THREE.SpotLight(0xff0000, 2);
       spotLight.position.set(-20, -20, 120);
       spotLight.castShadow = true;
-      spotLight.distance = 2000;
+      spotLight.distance = 209;
       spotLight.decay = 1;
       spotLight.angle = 0.2;
-      this.scene.add(spotLight);
       this.lights.spotLight = spotLight
+      this.scene.add(spotLight);
+
+      const rectAreaLight = new THREE.RectAreaLight(0x0033bb, 11.0, 10 ,10);
+      rectAreaLight.position.set(-5, -10, -5);
+      rectAreaLight.lookAt(0, 0, 0);
+      this.lights.rectAreaLight = rectAreaLight;
+      this.scene.add(this.lights.rectAreaLight);
     },
     MakeHelperGreatAgain() {
       this.FakeBoxHelper();
       this.FakeBox3Helper();
       this.FakeFaceNormalsHelper();
+      this.FakeVertexNormalsHelper();
 
+      this.FakeArrowHelper();
       this.FakeAxesHelper();
       this.FakeGridHelper();
       this.FakePolarGridHelper();
+      this.FakePlaneHelper();
 
       this.FakeHemisphereLightHelper(this.lights.hemisphereLight);
       this.FakeCameraHelper(this.lights.spotLight);
       this.FakeSpotLightHelper(this.lights.spotLight);
       this.FakeDirectionalLightHelper(this.lights.directionalLight);
       this.FakePointLightHelper(this.lights.pointLight);
+      this.FakeRectAreaLightHelper(this.lights.rectAreaLight);
+
+      this.FakeSkeletonHelper();
+
+
       // 强制刷新 helpers
       this.helpers = Object.assign({}, this.helpers);
       // 这个不行, 会加一个 undefined 进去
       // this.$set(this.helpers);
     },
+    FakeArrowHelper() {
+      let dir = new THREE.Vector3( -1, -1, -1 );
+      // normalize the direction vector (convert to vector of length 1)
+      dir.normalize();
+
+      let origin = new THREE.Vector3( 0, 0, 0 );
+      let length = 128;
+      let hex = 0xffff00;
+
+      this.helpers.ArrowHelper = new THREE.ArrowHelper( dir, origin, length, hex );
+      this.scene.add( this.helpers.ArrowHelper );
+    },
     FakeAxesHelper() {
-      this.helpers.AxesHelper = new THREE.AxesHelper(64);
+      this.helpers.AxesHelper = new THREE.AxesHelper(256);
       this.scene.add(this.helpers.AxesHelper);
     },
     FakeBoxHelper() {
@@ -162,7 +197,17 @@ export default {
       box.setFromCenterAndSize(new THREE.Vector3(9, 9, 9), new THREE.Vector3(18, 18, 18));
       this.helpers.Box3Helper = new THREE.Box3Helper(box, 0xff00ff);
       // this.scene.add(box); // invisible 
-      this.scene.add(this.helpers.Box3Helper);      
+      this.scene.add(this.helpers.Box3Helper);  
+    },
+    FakePlaneHelper() {
+      let plane = new THREE.Plane(new THREE.Vector3(-10, -10, 0), 1);
+      this.helpers.PlaneHelper = new THREE.PlaneHelper(plane, 4, 0xffff00);
+      this.scene.add(this.helpers.PlaneHelper);
+    },
+    FakeVertexNormalsHelper() {
+      const geometry = this.shapes.children[0];
+      this.helpers.VertexNormalsHelper = new THREE.VertexNormalsHelper(geometry, 1, 0xffff00, 1000);
+      this.scene.add(this.helpers.VertexNormalsHelper);
     },
     FakeCameraHelper(spotLight) {
       this.helpers.CameraHelper = new THREE.CameraHelper(spotLight.shadow.camera);
@@ -213,15 +258,40 @@ export default {
     FakePointLightHelper(pointLight) {
       const sphereSize = 10;
       this.helpers.pointLightHelper = 
-              new THREE.PointLightHelper( pointLight, sphereSize );
+              new THREE.PointLightHelper(pointLight, sphereSize);
       this.scene.add(this.helpers.pointLightHelper);
     },
+    FakeRectAreaLightHelper(rectAreaLight) {
+      this.helpers.rectAreaLightHelper =
+              new THREE.RectAreaLightHelper(rectAreaLight, 0xffffff);
+      // × this.scene.add(this.helpers.rectAreaLightHelper);
+      // √ helper must be added as a child of the light
+      rectAreaLight.add(this.helpers.rectAreaLightHelper);
+    },
+    FakeSkeletonHelper() {
+      let helper = new THREE.SkeletonHelper(this.skeleton.bones[0]);
+      helper.skeleton = this.skeleton;
+      
+      let boneContainer = new THREE.Group();
+		  boneContainer.add(this.skeleton.bones[0]);
+ 
+      this.helpers.SkeletonHelper = helper;
+      this.scene.add(helper);
+      // SkeletonHelper 始终假设当前获取的 bone 是最新的，所以我们需要手动把 bone 根节点进行更新
+      // @see https://stackoverflow.com/questions/55487874/skeletonhelper-is-not-rendered?noredirect=1&lq=1
+      // 下面这行也可以
+      // this.scene.add(this.skeleton.bones[0]);
+      this.scene.add(boneContainer);
+    },
     MakeMeshGreatAgain() {
+      this.RussiaSkeletonInterference();
+      this.RussiaSkinInterference();
+      
       const geoLocation = generateGeometry();
       let group = new THREE.Group();
       let geometry, material, mesh;
       geoLocation.forEach(location => {
-        console.log(location)
+        // console.log(location)
         geometry = new THREE.BoxGeometry(4,4,4);
         material = new THREE.MeshPhysicalMaterial({color:0xffffff});
         mesh = new THREE.Mesh(geometry, material);
@@ -230,6 +300,26 @@ export default {
         this.shapes = group;
       })
       this.scene.add(group);
+    },
+    RussiaSkeletonInterference() {
+      const bones = [];
+      const shoulder = new THREE.Bone();
+      const elbow = new THREE.Bone();
+      const hand = new THREE.Bone();
+
+      shoulder.add( elbow );
+      elbow.add( hand );
+
+      bones.push( shoulder );
+      bones.push( elbow );
+      bones.push( hand );
+
+      shoulder.position.set(0, 0, -10);
+      elbow.position.set(5, 5, 0);
+      hand.position.z = -5;
+      this.skeleton = new THREE.Skeleton(bones);
+    },
+    RussiaSkinInterference() {
     },
     MakeResizeEventAgain() {
       window.addEventListener('resize', e => {
@@ -250,7 +340,7 @@ export default {
     },
     ToggleTotallyHelperVeryBad(e) {
       Object.keys(this.helpers).forEach(key => {
-        console.log(this.helpers[key])
+        // console.log(this.helpers[key])
         this.helpers[key].visible = !this.helpers[key].visible
       })
       Array.from(e.target.parentElement.children).forEach(element => {
