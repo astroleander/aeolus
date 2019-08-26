@@ -1,10 +1,11 @@
 # 运行
 > 要求有 Node.js 环境
 
-···
+
+```
 npm install
 npm run dev
-···
+```
 
 # 项目结构 
 本项目
