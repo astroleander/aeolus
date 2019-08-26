@@ -21,7 +21,6 @@
 <script>
 import * as THREE from 'three'
 import OrbitControls from 'three-orbitcontrols'
-import { MeshPhysicalMaterial, Group } from 'three';
 
 function generateGeometry() {
   const ret = []
