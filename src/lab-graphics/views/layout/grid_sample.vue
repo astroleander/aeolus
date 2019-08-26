@@ -64,11 +64,11 @@
 <style lang="scss" scoped>
 // CSS 大概对这个页面更重要
 .sample { 
-  display: grid; 
+  display: grid;
   .child {
     height: 100%;
     width: 100%;
-    line-height: 100PX;
+    line-height: 100px;
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -202,14 +202,28 @@
  * @function debounce 抽象的抖动函数
  */
 import { setInterval, clearInterval } from 'timers';
+
+/**
+ * @function 计算滚动的位置
+ * 要注意高度有可能是非整数，需要先对数据进行过滤
+ * 不取整的话会使上一次滚动的高度不足，滚动不到位，少了分数位像素，下一次的滚动就会不足一屏，导致一个巨大的余数
+ * 进行向上取整，保证不会导致失败
+ * @param {Number} scroll 已经滚动的高度
+ * @param {Number} height 要滚动的一屏高度, innerHeight
+ * @param {Number} limit 总高，其实不用，srollTop 默认在超出时返回最大值 offsetHeight
+ * @param {String} forward 指示方向，值为 'down' 或 'up'
+ * 
+ */
 // scroll, height, limit, e.deltaY > 0? 'down' 
 function stickFramesize(scroll, height, limit, forward) {
-    if (forward === 'down') {
-      scroll = scroll + height - scroll % height
-    } else {
-      scroll = scroll - height - scroll % height
-      scroll > 0 ? scroll : 0
-    }
+  scroll = Math.ceil(scroll)
+  // console.log(scroll, height, forward, scroll % height)
+  if (forward === 'down') {
+    scroll = scroll + height - scroll % height
+  } else {
+    scroll = scroll - height - scroll % height
+    scroll > 0 ? scroll : 0
+  }
   return scroll
 }
 
@@ -274,8 +288,8 @@ export default {
     onScroll(e) {
       // e.preventDefault();
       let limit = document.body.offsetHeight;
-      let height = window.innerHeight
-      let scroll = document.documentElement.scrollTop
+      let height = window.innerHeight;
+      let scroll = document.documentElement.scrollTop;
       Promise.resolve(stickFramesize(scroll, height, limit, e.deltaY > 0? 'down' : 'up'))
         .then(res => debouncingScroll(res, 200))
     },
