@@ -1,4 +1,13 @@
-# Aeolus 中文文档
+# 运行
+> 要求有 Node.js 环境
+
+
+```
+npm install
+npm run dev
+```
+
+# 项目结构 
 本项目
 ```
 Aeolus.src 项目本身是一个非脚手架搭建的 webpack 项目。
