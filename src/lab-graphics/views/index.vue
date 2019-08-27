@@ -11,7 +11,12 @@
     <template v-for="(view, idx) in view_filter_list">
       <router-link :key="idx" v-if="view.name !== 'index' || view.meta.name !== 'index'" :to="{ path: view.path, name: view.name }">
         <li><template v-for="(path, idx) in view.meta.paths">
-            {{idx === view.meta.paths.length - 1 ? view.meta.name : '[' + path + ']'}}
+            {{ 
+              idx === view.meta.paths.length - 1 ? 
+                view.meta.name === 'index' ? view.meta.paths[idx - 1] + ' Sample' : view.meta.name
+                : 
+                '[' + path + ']'
+            }}
         </template></li>
       </router-link>
     </template>
