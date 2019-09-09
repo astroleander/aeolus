@@ -6,6 +6,7 @@
 -->
 <template>
   <article class='fullscreen' id='container'>
+    <button class='float right' @click='toggleLines'>Wire Frame</button>
   </article>
 </template>
 
@@ -28,23 +29,27 @@ export default {
       meshes: [],
       studio: {},
       count: 0,
+      wireframe: true,
+      lines: []
     }
   },
-  mounted() {
-    this.invokeGeometries();
+  async mounted() {
+    // 一旦有回调需要同步，你就需要不停地上溯，直到可以抵达逻辑同步的那一层
 
     this.initRenderer();
     this.initCamera();
     this.initScene();
 
+    await this.invokeGeometries();
     this.buildStudio();
     this.locateGeometries();
 
     this.render();
   },
   methods: {
-    invokeGeometries() {
+    async invokeGeometries() {
       this.geometries = [];
+      let that = this
       /**
        * BoxBufferGeometry
        * width : Float,
@@ -65,7 +70,23 @@ export default {
        * thetaLength : Float
        */
       let circle = new THREE.CircleBufferGeometry(this.size / 2);
+      circle.rotation = true;
       this.geometries.push(circle);
+
+      /**
+       * SphereBufferGeometry
+       * radius : Float, 
+       * widthSegments : Integer, // Minimum value is 3, and the default is 8.
+       * heightSegments : Integer, // Minimum value is 2, and the default is 6. 
+       * phiStart : Float, 
+       * phiLength : Float, 
+       * thetaStart : Float, 
+       * thetaLength : Float
+       * phi 和 theta 是输入, 可以通过定义这两个值的范围来画扇面, 
+       * 简单地看了一眼源代码, shpere 写的很像 parametric 
+       */
+      let sphere = new THREE.SphereBufferGeometry(this.size/2, 32, 24);
+      this.geometries.push(sphere);
 
       /**
        * ConeBufferGeometry
@@ -94,7 +115,28 @@ export default {
       let cylinder = new THREE.CylinderBufferGeometry(this.size / 2, this.size / 2, this.size);
       this.geometries.push(cylinder);
 
- 
+      // shape 不拉伸, extrude 拉伸 (翻译成英语真的爆笑)
+      let shape = new THREE.Shape();
+      // 这玩意儿是平面的，只有 x 和 y
+      shape.moveTo(0, this.size / 2);
+      // shape.bezierCurveTo(0, 0, 0, 0, this.size / 2, 0);
+      // shape.bezierCurveTo(0, 0, 0, 0, 0, -this.size / 2);
+      // shape.bezierCurveTo(0, 0, 0, 0, -this.size / 2, 0);
+      // shape.bezierCurveTo(0, 0, 0, 0, 0, this.size / 2);
+      shape.lineTo(this.size / 2, this.size / 2);
+      shape.lineTo(this.size / 2, 0);
+      shape.lineTo(0, -this.size / 2);
+      shape.lineTo(-this.size / 2, 0);
+      shape.lineTo(0, this.size / 2);
+      /**
+      * ShapeBufferGeometry
+      * shapes : Array
+      * curveSegments : Integer
+      * shapes — Array of shapes or a single shape.
+      * curveSegments - Integer - Number of segments per shape. Default is 12.
+      */
+      let plat = new THREE.ShapeBufferGeometry(shape, 12);
+      this.geometries.push(plat);
 
       /**
        * ExtrudeBufferGeometry
@@ -111,20 +153,7 @@ export default {
        * - extrudePath : THREE.Curve. A 3D spline path along which the shape should be extruded.
        * - UVGenerator : Object. object that provides UV generator functions
        */
-      let extrudeShape = new THREE.Shape();
-      // 这玩意儿是平面的，只有 x 和 y
-      extrudeShape.moveTo(0, this.size / 2);
-      // extrudeShape.bezierCurveTo(0, 0, 0, 0, this.size / 2, 0);
-      // extrudeShape.bezierCurveTo(0, 0, 0, 0, 0, -this.size / 2);
-      // extrudeShape.bezierCurveTo(0, 0, 0, 0, -this.size / 2, 0);
-      // extrudeShape.bezierCurveTo(0, 0, 0, 0, 0, this.size / 2);
-      extrudeShape.lineTo(this.size / 2, this.size / 2);
-      extrudeShape.lineTo(this.size / 2, 0);
-      extrudeShape.lineTo(0, -this.size / 2);
-      extrudeShape.lineTo(-this.size / 2, 0);
-      extrudeShape.lineTo(0, this.size / 2);
-
-      let extrude = new THREE.ExtrudeBufferGeometry(extrudeShape, {
+      let extrude = new THREE.ExtrudeBufferGeometry(shape, {
         steps: 2,
         depth: this.size / 2,
         bevelEnabled: true,
@@ -145,6 +174,36 @@ export default {
        * segments — the number of circumference segments to generate. Default is 12.
        * 可以理解为在平面上的一四象限画线, 然后把这根线转一圈(转圈按照segments)
        */
+      let points = [];
+      for (let x = 0; x < this.size/2; x += 0.5) {
+        points.push(new THREE.Vector2(x, x - this.size/2)); 
+      }
+      for (let x = this.size/2; x >= 0 ; x -= 0.5) {
+        points.push(new THREE.Vector2(x, Math.sqrt(this.size/2 * this.size/2 - x * x))); 
+      }
+      let lathe = new THREE.LatheBufferGeometry(points, 3);
+      this.geometries.push(lathe)
+
+      /**
+       * TetrahedronBufferGeometry
+       * @extends PolyhedronBufferGeometry
+       * radius : Float, 
+       * detail : Integer
+       */
+      let tetrahedron = new THREE.TetrahedronBufferGeometry(this.size/2);
+      this.geometries.push(tetrahedron);
+
+      /**
+       * OctahedronBufferGeometry
+       * @extends PolyhedronBufferGeometry
+       * radius : Float, 
+       * detail : Integer,
+       * radius — Radius of the octahedron. Default is 1.
+       * detail — Default is 0.
+       * Setting this to a value greater than zero add vertices making it no longer an octahedron.
+       */
+      let octahedron = new THREE.OctahedronBufferGeometry(this.size / 2);
+      this.geometries.push(octahedron);
 
       /**
        * DodecahedronBufferGeometry
@@ -156,6 +215,7 @@ export default {
        */
       let dodecahedron = new THREE.DodecahedronBufferGeometry(this.size / 2);
       this.geometries.push(dodecahedron);
+
       /**
        * IcosahedronBufferGeometry
        * @extends PolyhedronBufferGeometry
@@ -166,6 +226,192 @@ export default {
        */
       let icosahedron = new THREE.IcosahedronBufferGeometry(this.size / 2);
       this.geometries.push(icosahedron);
+
+      /**
+       * ParametricBufferGeometry
+       * func : Function, 
+       * slices : Integer, 
+       * stacks : Integer
+       * func — A function that takes in a u and v value each between 0 and 1 and modifies a third Vector3 argument
+       * slices — The count of slices to use for the parametric function
+       * stacks — The count of stacks to use for the parametric function
+       */
+      // 一个参数可以构建一个平面
+      // 两个参数可以构建一个空间
+      // u, v 从 0 取到 1
+      let ArchimedeanSpiral = function(u, v, target) {
+        let r = that.size/2 * u;
+        // 最简单的 parametric curve
+        let x = -r * Math.sin(u * that.size * Math.PI); // tsint 的变种
+        let y = r * Math.cos(u * that.size * Math.PI); // tcost 的变种
+        let z = that.size / 2 * v;
+        return target.set(x, y, z);
+      }
+      let parametric2d = new THREE.ParametricBufferGeometry(ArchimedeanSpiral, 220, 120);
+      this.geometries.push(parametric2d);
+
+      let WhateverSpiral = function (u, v, target) {
+        let r = u * 2 * Math.PI;
+        let x, y, z;
+        x = 3 * Math.cos(u * Math.PI) + Math.cos(u * Math.PI) * Math.cos(v * Math.PI);
+        z = 3 * Math.sin(u * Math.PI) + Math.sin(u * Math.PI) * Math.cos(v * Math.PI);
+        y = Math.sin(v * Math.PI);
+        return target.set(x, y, z);
+      }
+      let parametric3d = new THREE.ParametricBufferGeometry(WhateverSpiral, 3, 120);
+      this.geometries.push(parametric3d)
+
+      /**
+       * PlaneBufferGeometry
+       * width : Float
+       * height : Float
+       * widthSegments : Integer
+       * heightSegments : Integer
+       */
+       let plane = new THREE.PlaneBufferGeometry(this.size, this.size);
+       plane.rotation = true;
+       this.geometries.push(plane);
+
+       /**
+        * RingBufferGeometry
+        * innerRadius : Float,
+        * outerRadius : Float,
+        * thetaSegments : Integer, // Minimum is 3. Default is 8.
+        * phiSegments : Integer, // Minimum is 1. Default is 1.
+        * thetaStart : Float,
+        * thetaLength : Float
+        */
+       let ring = new THREE.RingBufferGeometry(this.size/4, this.size/2, 16, 8);
+       ring.rotation = true;
+       this.geometries.push(ring);
+       
+       /**
+        * TextBufferGeometry
+        * @extends ExtrudeBufferGeometry
+        * text : String, 
+        * parameters : Object
+        */
+        function fontLoader(url) {
+          return new Promise(resolve => {
+            // 把回调交给 Promise 承担
+            new THREE.FontLoader().load(url, resolve)
+          })
+        }
+        let font = await fontLoader('/src/res/assets/Liu Jian Mao Cao_Regular.json')
+        let text = new THREE.TextBufferGeometry('苟利国家生死以', {
+            font: font,
+            size: this.size / 5,
+            height: 1, 
+          });
+        // text.rotation = true
+        this.geometries.push(text);
+
+        /**
+         * TorusBufferGeometry
+         * radius : Float,  // Radius of the torus, from the center of the torus to the center of the tube. Default is 1.
+         * tube : Float,  //  Radius of the tube. Default is 0.4.
+         * radialSegments : Integer, // Default is 8
+         * tubularSegments : Integer, // Default is 6.
+         * arc : Float
+         */
+        let torus = new THREE.TorusBufferGeometry(
+          this.size / 8 * 3 , 
+          this.size / 16, 
+          30, 
+          200);
+        this.geometries.push(torus);
+
+        /**
+         * TorusKnotBufferGeometry
+         * radius : Float, 
+         * tube : Float, 
+         * tubularSegments : Integer, 
+         * radialSegments : Integer, 
+         * p : Integer 
+         * This value determines, 
+         * how many times the geometry winds around its axis of rotational symmetry. 
+         * Default is 2.
+         * q : Integer
+         * This value determines,
+         * how many times the geometry winds around a circle in the interior of the torus. 
+         * Default is 3.
+         */
+        let torusKnot = new THREE.TorusKnotBufferGeometry(
+          this.size/2, 
+          this.size/8,
+          21,
+          16,
+          2,
+          3)
+        this.geometries.push(torusKnot);
+        
+        /**
+         * Curve
+         * .getPoint : Vector 
+         * - t : Float, A position on the curve. Must be in the range [ 0, 1 ].
+         * - optionalTarget : Vector 
+         */
+        class CustomCurve extends THREE.Curve{
+          constructor(scale) {
+            super();
+            this.scale = scale;
+          }
+          getPoint(t) {
+            let tx = t * Math.sin(2 * Math.PI * t);
+            let tz = t * Math.cos(2 * Math.PI * t);
+            let ty = (2 * Math.PI * t * t -  2 * Math.PI * t + 1)
+            return new THREE.Vector3(tx, ty, tz).multiplyScalar(this.scale);
+          }
+        }
+        let curve = new CustomCurve(this.size/2);
+        /**
+         * TubeBufferGeometry
+         * path : Curve, 
+         * tubularSegments : Integer, 
+         * radius : Float, 
+         * radialSegments : Integer, 
+         * closed : Boolean
+         */
+        let tube = new THREE.TubeBufferGeometry(curve, 6, 1, 4, false);
+        this.geometries.push(tube);
+
+        let catmullRadius = this.size/2;
+        let catmullCurve = new THREE.CatmullRomCurve3([
+          new THREE.Vector3(-2 * catmullRadius, 0, 2 * catmullRadius),
+          new THREE.Vector3(-catmullRadius, catmullRadius, catmullRadius),
+          new THREE.Vector3(0, 0, 0),
+          new THREE.Vector3(catmullRadius, -catmullRadius, catmullRadius),
+          new THREE.Vector3(2 * catmullRadius, 0, -2 * catmullRadius),
+        ])
+        let catmull = new THREE.TubeBufferGeometry(catmullCurve, 50, 1, 32, false);
+        this.geometries.push(catmull);
+
+        /**
+         * PolyhedronBufferGeometry
+         * vertices : Array, // Array of points of the form [1,1,1, -1,-1,-1, ... ] 
+         * indices : Array, // Array of indices that make up the faces of the form [0,1,2, 2,3,0, ... ] 
+         * radius : Float,  // The radius of the final shape 
+         * detail : Integer // How many levels to subdivide the geometry. The more detail, the smoother the shape.
+         */
+        let magnification = this.size / 2
+        let verticesOfCube = [
+            -1,-1,-1,    1,-1,-1,    1, 1,-1,    -1, 1,-1,
+            -1,-1, 1,    1,-1, 1,    1, 1, 1,    -1, 1, 1,
+        ]
+        // 把哪几个顶点(index) 连起来
+        let indicesOfFaces = [
+            2,1,0,    0,3,2,
+            0,4,7,    7,3,0,
+            0,1,5,    5,4,0,
+            1,2,6,    6,5,1,
+            // 2,3,7,    7,6,2,
+            4,5,6,    6,7,4
+        ]
+        let polyhedron = new THREE.PolyhedronBufferGeometry(verticesOfCube, indicesOfFaces, this.size / 2, 0);
+        // let material = new THREE.MeshNormalMaterial();
+        // let g = new THREE.Mesh(polyhedron, material);
+        // this.scene.add(g)
+        this.geometries.push(polyhedron);
     },
     locateGeometries() {
       let material = new THREE.MeshLambertMaterial({ color: 0x21ccee, side: THREE.DoubleSide});
@@ -175,8 +421,26 @@ export default {
         const mesh = new THREE.Mesh(geometry.obj, material);
         mesh.position.set(geometry.x, 0, geometry.y);
         mesh.castShadow = true;
+        if (geometry.rotation) {
+          mesh.rotateX(Math.PI / 2);
+        }
         this.scene.add(mesh);
         this.meshes.push(mesh);
+        
+        // if (this.wireframe) {
+        let wireframe = new THREE.WireframeGeometry(geometry.obj);
+        let line = new THREE.LineSegments(wireframe);
+        line.material.color = new THREE.Color(0xffffff);
+        line.material.depthTest = false;
+        line.material.opacity = 0.2;
+        line.material.transparent = true;
+        line.position.set(geometry.x, 0, geometry.y);
+        this.lines.push(line)
+        this.scene.add(line);
+        if (geometry.rotation) {
+          line.rotateX(Math.PI / 2);
+        }
+        // }
       })
     },
     // set light, plane, helper, etc.
@@ -200,6 +464,22 @@ export default {
       this.scene.add(light);
       this.$set(this.studio, 'light', light)
 
+      // let lightShallow = new THREE.SpotLight(0xdddddd);
+      // lightShallow.angle = 1.05;
+      // lightShallow.intensity = 0.3;
+      // lightShallow.penumbra = 1;
+      // lightShallow.decay = 2;
+
+      // lightShallow.position.set(1500, 0, 1500);
+      // lightShallow.lookAt(new THREE.Vector3(0, 0, 0));
+      // lightShallow.castShadow = true;
+      // lightShallow.shadow.mapSize.width = 2048;
+      // lightShallow.shadow.mapSize.height = 2048;
+      // lightShallow.shadow.camera.near = 0.5;
+      // lightShallow.shadow.camera.far = 2000;
+      // this.scene.add(lightShallow);
+      // this.$set(this.studio, 'lightShallow', lightShallow)
+      
       let geometry = new THREE.PlaneBufferGeometry( 2000, 2000, 32, 32 );
       geometry.rotateX(Math.PI / 2);
       let material = new THREE.MeshLambertMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
@@ -207,6 +487,9 @@ export default {
       plane.receiveShadow = true;
       plane.position.y = -10;
       this.scene.add( plane );
+
+
+
     },
     initCamera() {
       let fov = 60, aspect = window.innerWidth / window.innerHeight, near = 0.1, far = 4000;
@@ -238,11 +521,15 @@ export default {
 
       let lx = r * Math.cos(t);
       let ly = r * Math.sin(t);
+      // let lsx = r * Math.cos(t + 30);
+      // let lsy = r * Math.sin(t + 30);
 
-      this.renderer.render(this.scene, this.camera);
       this.studio.light.position.set(lx, 70, ly);
       this.studio.light.lookAt(origin);
+      // this.studio.lightShallow.position.set(lsx, 70, lsy);
+      // this.studio.lightShallow.lookAt(origin);
 
+      this.renderer.render(this.scene, this.camera);
       requestAnimationFrame(this.render);
     },
     updateParams() {
@@ -254,6 +541,11 @@ export default {
       });
       this.invokeGeometries();
       this.locateGeometries();
+    },
+    toggleLines() {
+      this.lines.forEach(line => {
+        line.visible = !line.visible;
+      });
     }
   }
 }
