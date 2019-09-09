@@ -22,6 +22,7 @@ export default function (array, item_size = 10, margin = 10) {
     row: Math.floor(idx / column),
     x: (idx % column) * (item_size + margin) + item_size / 2 - width / 2, 
     y: Math.floor(idx / column) * (item_size + margin) + item_size / 2 - height / 2,
+    rotation: array[idx].rotation ? true : false
   })
   return {
     size: [width, height],
