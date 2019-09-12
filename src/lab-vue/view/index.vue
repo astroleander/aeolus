@@ -1,5 +1,5 @@
 <template>
-  <article id="dashboard">
+  <article class='dashboard' id='vue-dashboard'>
     <section>Filter: <input type="text" v-focus v-model="list_filter"/><del>(not supported to search tag)</del>support!</section>
     <section class="tags-container">
       <span class="tag del" @click="setTag('')"> x </span>

@@ -56,3 +56,36 @@ article {
 .serif {
     font-family: 'Noto Serif SC','Noto Serif TC','Noto Serif JP', serif;
 }
+
+.dashboard {
+  li {
+    list-style: none;
+    padding-left: 8px;
+    margin: 1px 2px;  
+  }
+  a {
+    text-decoration: none;
+    color: #34495E;
+    
+  }
+}
+
+.dashboard#graphics-dashboard {
+  li {
+    border-left: 4px solid gray;
+    &:hover {
+      border-left: 6px solid black;
+      transition: all 0.1s ease;
+    }
+  }
+}
+
+.dashboard#vue-dashboard {
+  li {
+    border-left: 4px solid #41B883;
+    &:hover {
+      border-left: 6px solid #34495E;
+      transition: all 0.1s ease;
+    }
+  }
+}

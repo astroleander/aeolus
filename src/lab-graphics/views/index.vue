@@ -1,5 +1,5 @@
 <template>
-  <article id="dashboard">
+  <article class='dashboard' id='graphics-dashboard'>
     <section>Filter: <input type="text" v-focus v-model="list_filter"/></section>
     <section class="tags-container">
       <span class="tag del" @click="setTag('')"> × </span>
