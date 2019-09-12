@@ -1,10 +1,13 @@
 console.log('[build][entrance.js]', 'entrance triggered')
 
+import '@/modules/utils/general_bash'
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Vue from 'vue';
 import VueApp from './VueApp' 
+
 import ReactPage from './ReactApp';
 const ReactApp = () => {
   return (

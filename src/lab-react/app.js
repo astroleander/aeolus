@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import '@/modules/utils/general_bash'
+
+
 import TimerView from './js/views/TimerView.jsx';
 import TodoApp from './js/views/TodoApp'
 import Game from './js/TicTacToe'

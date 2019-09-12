@@ -10,6 +10,7 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
+
 var addTwoNumbers = function (l1, l2) {
   let head = l1
   let isAdded = 0
@@ -35,3 +36,11 @@ var addTwoNumbers = function (l1, l2) {
   }
   return head
 };
+
+console.log('[2][sample]');
+console.log(
+  `addTwoNumbers(
+    [{val}, {}, {}, {}], 
+    [{}, {}, {}, {}]
+  )`);
+console.log(twoSum([2,7,11,15], 9))

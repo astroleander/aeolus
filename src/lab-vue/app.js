@@ -4,6 +4,7 @@ import App from './AppVue.vue';
 import './styles/common.scss'
 import "#res/styles/index.scss";
 import "#res/main.css";
+import "@/modules/utils/general_bash"
 
 import router from './router'
 
