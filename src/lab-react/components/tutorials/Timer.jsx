@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 class Timer extends React.Component {
   constructor(props) {
@@ -39,4 +38,3 @@ class Timer extends React.Component {
 }
 
 export default Timer;
-// ReactDOM.render(<Timer />, document.getElementById(''))

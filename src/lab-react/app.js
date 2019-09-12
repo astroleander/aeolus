@@ -1,22 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import '@/modules/utils/general_bash'
 
+import Router from './Navigation'
 
-import TimerView from './js/views/TimerView.jsx';
-import TodoApp from './js/views/TodoApp'
-import Game from './js/TicTacToe'
-import LifecycleContainer from './components/lifecycle'
+// import { Router, Route, Link} from 'react-router';
 
-const App = () => {
+const App = function() {
 	return (
 		<div>
-			{/* <h1>React Lab</h1> */}
-			<TimerView title="React Lab"/>
+			<h1>React Lab</h1>
+			<Router/>
+			{/* <TimerView title="React Lab"/>
 		    <Game />
 			<TodoApp />
-			<LifecycleContainer />			
+			<LifecycleContainer />			 */}
 		</div>
 	);
 };

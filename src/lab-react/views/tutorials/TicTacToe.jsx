@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.scss';
+import '@r/styles/TicTacToe.scss';
 
 /**
  * 因为 Square 组件不再持有 state，

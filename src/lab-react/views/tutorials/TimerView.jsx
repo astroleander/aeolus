@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Timer from '../components/Timer'
+import Timer from '@r/components/tutorials/Timer'
 
 
 class TimerView extends React.Component{
