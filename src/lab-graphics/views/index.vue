@@ -60,10 +60,7 @@ export default {
   created: function() {
 
   },
-  mounted: async function() {
-    // import('../router').then(module => {
-    //   this.view_list = module.view_routes
-    // })
+  mounted: function() {
     import('../router/view').then(module => {
       console.log(module)
       this.view_list = module.default

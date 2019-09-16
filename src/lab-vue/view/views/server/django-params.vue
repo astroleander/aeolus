@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import {django} from '#res/config'
+import {django} from '#res/definitions'
 
 const getParams = params => {
   let str = []

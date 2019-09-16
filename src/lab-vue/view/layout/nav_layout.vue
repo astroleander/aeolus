@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { entries } from '#res/config'
+import { entries } from '#res/definitions'
 export default {
   data() {
     return {

@@ -10,15 +10,19 @@ function importViews (r) {
       return { route, name, paths }
     }) (key)
     view_routes.push({
-      // full name
+      // 文件实际地址
       route: route,
-      path: name,
-      // last name
-      name: paths.map(
+      // url 地址
+      path: `/views${route}`,
+      // 纯粹名
+      name: name,
+      // 全标签名
+      content: paths.map(
           (e, idx) => idx !== paths.length - 1 ?
           `[${e}]` : e 
         ).join('').replace(/\//, "").replace(/{\/|_}/g, " "),
-      component: () => r(key)
+      component: () => r(key),
+      tags: paths
     });
   });
 }

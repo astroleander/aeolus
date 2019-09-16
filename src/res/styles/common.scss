@@ -65,18 +65,19 @@ article {
   }
   a {
     text-decoration: none;
-    color: #34495E;
-    
   }
 }
 
 .dashboard#graphics-dashboard {
   li {
-    border-left: 4px solid gray;
+    border-left: 4px solid #F4A261;
     &:hover {
-      border-left: 6px solid black;
+      border-left: 6px solid #E76F51;
       transition: all 0.1s ease;
     }
+  }
+  a {
+    color: #264653;
   }
 }
 
@@ -87,5 +88,21 @@ article {
       border-left: 6px solid #34495E;
       transition: all 0.1s ease;
     }
+  }
+  a {
+    color: #34495E;
+  }
+}
+
+.dashboard#react-dashboard {
+  li {
+    border-left: 4px solid #222;
+    &:hover {
+      border-left: 6px solid #61DBFB;
+      transition: all 0.1s ease;
+    }
+  }  
+  a {
+    color: #222;
   }
 }
