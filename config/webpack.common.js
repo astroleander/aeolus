@@ -55,8 +55,8 @@ module.exports = {
    * output 属性还有更多可配置的特性，如果你想要了解更多关于 output 属性的概念，你可以通过阅读概念章节 @see https://www.webpackjs.com/configuration/output/ 来了解更多。
    */
   output: {
-    filename: '[name].[hash].bundle.js',
-    chunkFilename: '[id].[hash].js',
+    filename: '[name].[hash:5].bundle.js',
+    chunkFilename: '[id].[hash:5].js',
     path: path.resolve(__dirname, '../dist'),
     pathinfo: true
   },
@@ -191,7 +191,7 @@ module.exports = {
         test: /\.(eot|woff|woff2|ttf)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: '[name].[ext]?[hash:5]'
         }
       }
     ]
@@ -260,8 +260,8 @@ module.exports = {
      * en: other plugins
      */
     new MiniCssExtactPlugin({
-      filename: '[name].[hash].css',
-      chunkFilename: '[id].[hash].css'
+      filename: '[name].[hash:5].css',
+      chunkFilename: '[id].[hash:5].css'
     }),
     new VueLoaderPlugin(),
     new BundleAnalyzerPlugin({
