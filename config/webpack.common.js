@@ -6,7 +6,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 const { VueLoaderPlugin } = require('vue-loader')
 
-// const entriesConfig = require('./entry.config.js')
+// const entriesConfig = require('/config.entries')
 // const htmlWebPackPlugins = (configs) => configs.map(config => new HtmlWebPackPlugin(config))
 
 /**
@@ -37,7 +37,7 @@ module.exports = {
     vue: './src/lab-vue/app.js',
     graphics: './src/lab-graphics/app.js',
     js: './src/lab-js/app.js',
-    config: './src/global-config.js'
+    config: './config.global.js'
   },
   /**
    * @property {path:String} filename entry 里定义的入口文件的输出 bundle 的名称。
@@ -55,8 +55,8 @@ module.exports = {
    * output 属性还有更多可配置的特性，如果你想要了解更多关于 output 属性的概念，你可以通过阅读概念章节 @see https://www.webpackjs.com/configuration/output/ 来了解更多。
    */
   output: {
-    filename: '[name].[hash:5].bundle.js',
-    chunkFilename: '[id].[hash:5].js',
+    filename: '[name].[hash].bundle.js',
+    chunkFilename: '[id].[hash].js',
     path: path.resolve(__dirname, '../dist'),
     pathinfo: true
   },
@@ -191,7 +191,7 @@ module.exports = {
         test: /\.(eot|woff|woff2|ttf)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash:5]'
+          name: '[name].[ext]?[hash]'
         }
       }
     ]
@@ -260,8 +260,8 @@ module.exports = {
      * en: other plugins
      */
     new MiniCssExtactPlugin({
-      filename: '[name].[hash:5].css',
-      chunkFilename: '[id].[hash:5].css'
+      filename: '[name].[hash].css',
+      chunkFilename: '[id].[hash].css'
     }),
     new VueLoaderPlugin(),
     new BundleAnalyzerPlugin({
