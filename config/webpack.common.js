@@ -36,7 +36,8 @@ module.exports = {
     react: './src/lab-react/app.js',
     vue: './src/lab-vue/app.js',
     graphics: './src/lab-graphics/app.js',
-    js: './src/lab-js/app.js'
+    js: './src/lab-js/app.js',
+    config: './src/global-config.js'
   },
   /**
    * @property {path:String} filename entry 里定义的入口文件的输出 bundle 的名称。
@@ -210,27 +211,27 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/index.html', 
       filename: './index.html',     // 
-      chunks: ['home']
+      chunks: ['home', 'config']
     }),
     new HtmlWebPackPlugin({
       template: './src/lab-react/index.html',
       filename: './lab-react/index.html',
-      chunks: ['react']
+      chunks: ['react', 'config']
     }),
     new HtmlWebPackPlugin({
       template: './src/lab-vue/index.html',
       filename: './lab-vue/index.html',
-      chunks: ['vue']
+      chunks: ['vue', 'config']
     }),
     new HtmlWebPackPlugin({
       template: './src/lab-graphics/index.html',
       filename: './lab-graphics/index.html',
-      chunks: ['graphics']
+      chunks: ['graphics', 'config']
     }),
     new HtmlWebPackPlugin({
       template: './src/lab-js/index.html',
       filename: './lab-js/index.html',
-      chunks: ['js']
+      chunks: ['js', 'config']
     }),
     
     /**

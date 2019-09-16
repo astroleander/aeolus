@@ -1,6 +1,7 @@
 console.log('[build][entrance.js]', 'entrance triggered')
 
-import '@/modules/utils/general_bash'
+// build 的 entries 里不包括其它任何 entry，需要手动引入全局 config 包
+import '@/modules/utils/global-bash'
 
 import React from 'react';
 import ReactDOM from 'react-dom';

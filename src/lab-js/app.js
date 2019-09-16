@@ -1,1 +1,1 @@
-import '@/modules/utils/general_bash'
+console.log(document.getElementsByTagName('body')[0]);
