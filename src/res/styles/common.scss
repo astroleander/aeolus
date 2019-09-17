@@ -106,3 +106,20 @@ article {
     color: #222;
   }
 }
+
+.global-navigation {
+  a {
+    margin: 0px 4px 0px 0px;
+    font-size: 1.2em;
+    font-family: 'Roboto', serif;
+    text-decoration: none;
+    color: #212121;
+    transition: all 0.2s;
+    &:active, &:visited{
+      color: #212121;
+    }
+    &:hover {
+      color: #D62800;
+    }
+  }
+}

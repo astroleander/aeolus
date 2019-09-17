@@ -1,0 +1,11 @@
+.global-navigation-skeleton {
+    a {
+        margin: 1px 4px 0 0;
+        background: #DDD;
+        border-radius: 2px;
+        display: block;
+        height: 1.2em;
+        transition: 2s;
+    }
+    a:first-child { width: 15%; }
+}
