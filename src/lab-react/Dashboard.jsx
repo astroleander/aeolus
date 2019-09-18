@@ -17,6 +17,8 @@ export default class Dashboard extends Component {
   }
   componentDidMount() {
     import('#res/definitions.js').then(module => {
+      // 利用延时测试 skeleton
+      // setTimeout(() => {this.setState({nav: module.entries})}, 500);
       this.setState({nav: module.entries})
     })        
   }
@@ -43,27 +45,27 @@ export default class Dashboard extends Component {
     });
     return (
       <article id='react-dashboard' className="dashboard">
-        {Navigation(nav)}
+        {this.Navigation(nav)}
         <HashRouter>
             {renderedRouter}
         </HashRouter>
       </article>
     )
   }
-}
-
-function Navigation(list) {
-  return NavigationSkeleton();
-  console.log(list)
-  return (<header className='global-navigation'>
-    {list.map((element,idx) => 
-      (<a key={idx} href={element.path}>{element.title}</a>)
-    )}
-    </header>)
+  Navigation(list) {
+    if (!list) 
+      return NavigationSkeleton();
+    console.log(this)
+    return (<header className='global-navigation'>
+      {list.map((element,idx) => 
+        (<a key={idx} href={element.path}>{element.title}</a>)
+      )}
+      </header>)
+  }
 }
 
 function NavigationSkeleton() {
   return (<header className='global-navigation-skeleton'>
-    <a></a>
+    <a></a><a></a><a></a><a></a><a></a><a></a> 
   </header>)
 }

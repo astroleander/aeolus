@@ -1,11 +1,19 @@
 .global-navigation-skeleton {
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    // display: inline-block;
     a {
-        margin: 1px 4px 0 0;
-        background: #DDD;
+        width: 5%;
+        margin: 4px 1px;
+        background: #F3F3F3;
         border-radius: 2px;
         display: block;
-        height: 1.2em;
+        height: 1.8em;
         transition: 2s;
     }
-    a:first-child { width: 15%; }
+    a:first-child { width: 6%; margin-left: 2px;}
+    a:nth-child(odd) { width: 3%; }
+    a:nth-child(even) { width: 7%; }
+    a:nth-child(3) { width: 2%; }
 }
