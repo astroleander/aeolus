@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { dp, table } from '#algo/leetcode-118-119-pascals-triangle'
+import { dp, table } from '#algo/leetcode/118-119-pascals-triangle'
 
 export default {
   data() {
