@@ -3,7 +3,6 @@ import App from './AppVue.vue';
 
 import './styles/common.scss'
 
-
 import router from './router'
 
 import "@babel/polyfill";

@@ -211,27 +211,27 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/index.html', 
       filename: './index.html',     // 
-      chunks: ['home', 'config']
+      chunks: ['config', 'home']
     }),
     new HtmlWebPackPlugin({
       template: './src/lab-react/index.html',
       filename: './lab-react/index.html',
-      chunks: ['react', 'config']
+      chunks: [ 'config', 'react']
     }),
     new HtmlWebPackPlugin({
       template: './src/lab-vue/index.html',
       filename: './lab-vue/index.html',
-      chunks: ['vue', 'config']
+      chunks: ['config', 'vue']
     }),
     new HtmlWebPackPlugin({
       template: './src/lab-graphics/index.html',
       filename: './lab-graphics/index.html',
-      chunks: ['graphics', 'config']
+      chunks: ['config', 'graphics']
     }),
     new HtmlWebPackPlugin({
       template: './src/lab-js/index.html',
       filename: './lab-js/index.html',
-      chunks: ['js', 'config']
+      chunks: ['config', 'js']
     }),
     
     /**
