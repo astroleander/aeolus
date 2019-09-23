@@ -18,9 +18,12 @@ class FloatButton extends Component {
       rotateDeg: 45
     }
   }
+  handleBack() {
+    history.go(-1);
+  }
   render() {
     return (
-      <div className='floating-button' id='react-common-layout-floating-button'>
+      <div onClick={this.handleBack} className='floating-button' id='react-common-layout-floating-button'>
         <span className='cross'>+</span>
       </div>
     )
