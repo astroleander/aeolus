@@ -47,15 +47,15 @@
   }
 }
 #vue-common-layout-floating-button {
-  background: #34495E;
+  background: #41B883;
   &:active {
-    background: #41B883;
+    background: #34495E;
     .cross{
-      color: #34495E; 
+      color: #41B883; 
     }
   }
   .cross {
-    color: #41B883;
+    color: #34495E;
   }
 }
   
