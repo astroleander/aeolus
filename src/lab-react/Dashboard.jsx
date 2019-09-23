@@ -5,8 +5,8 @@ import Routers from '@r/router/view';
 
 import './styles/nav.scss'
 
-// import 'core-js'
-// import 'react-app-polyfill/stable';
+import 'core-js'
+import 'react-app-polyfill/stable';
 
 export default class Dashboard extends Component {
   constructor() {
@@ -15,12 +15,16 @@ export default class Dashboard extends Component {
       nav: null
     }
   }
+  async componentWillMount() {
+    let state = await import('#res/definitions.js');
+    this.setState({nav: state.entries})
+  }
   componentDidMount() {
-    import('#res/definitions.js').then(module => {
-      // 利用延时测试 skeleton
-      // setTimeout(() => {this.setState({nav: module.entries})}, 500);
-      this.setState({nav: module.entries})
-    })        
+    // import('#res/definitions.js').then(module => {
+    //   // 利用延时测试 skeleton
+    //   // setTimeout(() => {this.setState({nav: module.entries})}, 500);
+    //   this.setState({nav: module.entries})
+    // });
   }
   componentDidUpdate() {
   }
@@ -44,12 +48,14 @@ export default class Dashboard extends Component {
       )
     });
     return (
+      <>
+      {this.Navigation(nav)}
       <article id='react-dashboard' className="dashboard">
-        {this.Navigation(nav)}
         <HashRouter>
             {renderedRouter}
         </HashRouter>
       </article>
+      </>
     )
   }
   Navigation(list) {
