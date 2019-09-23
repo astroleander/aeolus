@@ -1,7 +1,6 @@
 <template>
   <div>
     <header class="global-navigation">
-      <a href="/">Top</a>
       <a v-for="entry in entries" :key="entry.title"
         :href="entry.path">
         {{entry.title}}

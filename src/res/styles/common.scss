@@ -120,7 +120,8 @@ article {
 
 .global-navigation {
   a {
-    margin: 0px 4px 0px 0px;
+    // position: absolute;
+    margin: 0px 4px 0px 4px;
     font-size: 1.2em;
     font-family: 'Roboto', serif;
     text-decoration: none;
@@ -131,6 +132,20 @@ article {
     }
     &:hover {
       color: #D62800;
+      &:before {
+        left: -5px;
+      }
+      &:after {
+        right: -5px;
+      }
+    }
+    &:before {
+      position: relative;
+      content: '[ ';
+    }
+    &:after {
+      position: relative;
+      content: ' ]';
     }
   }
 }

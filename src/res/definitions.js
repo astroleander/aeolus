@@ -14,6 +14,7 @@ module.exports = {
     }
   },
   entries: [
+    { title: 'Main',      path: '/'},
     { title: 'Build',     path: '/lab-build/output.html' },
     { title: 'Graphics',  path: '/lab-graphics/index.html' },
     { title: 'Vue',       path: '/lab-vue/index.html' },
