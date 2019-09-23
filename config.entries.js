@@ -1,10 +1,11 @@
+// 这个尝试挺失败的, 我还不如用 webpack-merge 呢
 const config = {
   home: {
     entry: './src/index.js',
     htmlwebpackplugin: {
       template: './src/index.html',
       filename: './index',
-      chunks: ['home']
+      chunks: ['config', 'home']
     }
   },
   react: {
@@ -12,7 +13,7 @@ const config = {
     htmlwebpackplugin: {
       template: './src/lab-react/index.html',
       filename: './lab-react/index',
-      chunks: ['react']
+      chunks: ['config', 'react']
     }
   },
   vue: {
@@ -20,7 +21,7 @@ const config = {
     htmlwebpackplugin: {
       template: './src/lab-vue/index.html',
       filename: './lab-vue/index',
-      chunks: ['vue']
+      chunks: ['config', 'vue']
     }
   },
   graphics: {
@@ -28,7 +29,7 @@ const config = {
     htmlwebpackplugin: {
       template: './src/lab-graphics/index.html',
       filename: './lab-graphics/index',
-      chunks: ['graphics']
+      chunks: ['config', 'graphics']
     }
   },
   js: {
@@ -36,7 +37,7 @@ const config = {
     htmlwebpackplugin: {
       template: './src/lab-js/index.html',
       filename: './lab-js/index',
-      chunks: ['js']
+      chunks: ['config', 'js']
     }
   }
 }
