@@ -65,6 +65,7 @@ export default {
         resolve(eur)
       })
     },
+    // 把基础单位从欧元转换为人民币
     calculatedCNY: function(eur) {
       return new Promise((resolve, reject) => {
         eur.forEach(daily_pair_list => {
@@ -136,7 +137,8 @@ export default {
           date: item.date,
         }
         for (let pair of item.pairs) {
-          new_item[pair.currency] = pair.rate
+          // 以常用口语形式表达
+          new_item[pair.currency] = pair.rate > 1 ? pair.rate : pair.rate_frac;
         }
         dataset.push(new_item)
       }
