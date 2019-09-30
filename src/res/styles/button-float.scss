@@ -25,12 +25,19 @@
   }
 
   * {
+    font-family: 'Roboto';
+
     user-select: none;
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer */
     -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
     -webkit-user-select: none; /* Chrome, Safari, and Opera */
     -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+    
+    line-height: 55px;
+    font-size: 38px;
+    text-align: center;
+    margin: 0;
   }
 }
 
@@ -58,14 +65,12 @@
     color: #34495E;
   }
 }
-  
+
 #react-common-layout-floating-button, #vue-common-layout-floating-button{
   bottom: 20px;
   right: 20px;
   
   .cross {
-    font-family: 'Roboto';
-
     display: block;
     position: absolute;
     top: 0;
@@ -74,7 +79,6 @@
     right: 0;
     text-align: center;
     padding: 0;
-    margin: 0;
     line-height: 55px;
     font-size: 38px;
     transform: rotate(45deg);
