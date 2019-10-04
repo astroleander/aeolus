@@ -21,6 +21,9 @@ const climbStairs = function (n) {
   return table[n-1]
 }
 
-export default {
+// export default {
+//   climbStairs
+// }
+module.exports = {
   climbStairs
 }
