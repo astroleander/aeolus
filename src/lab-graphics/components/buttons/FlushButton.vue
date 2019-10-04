@@ -1,14 +1,17 @@
+<!-- @inspireby Kamil https://codepen.io/KamilDyrek/pen/aXebmO?editors=1100-->
 <template>
-  <button>
+  <button :style="{'--content':`'${this.$slots.default[0].text || 'FlushButton'}'`}">
     <div class="left"></div>
-    <slot/>
+    <slot />
     <div class="right"></div>
   </button>
 </template>
 
 <script>
 export default {
-
+  mounted() {
+    console.log(this.$slots)
+  }
 }
 </script>
 
@@ -42,7 +45,7 @@ button {
 // right::after 是上面的黑框
 // button:::after 是背后的细字
 .right:after, button::after {
-  content: 'FlushButton';
+  content: var(--content);
   width: 100%;
   height: 100%;
   padding: 40px 40px;
