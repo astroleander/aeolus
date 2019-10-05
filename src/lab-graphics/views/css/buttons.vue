@@ -1,7 +1,9 @@
 <template>
-  <article class="button_container">
+  <article class="button-container-list">
     <template v-for="name in name_list">
-      <component v-bind:is='name' :key="name">{{name}}</component>
+      <section class="button-container" :name="name" :key="name">
+        <component v-bind:is='name'>{{name}}</component>
+      </section>
     </template>
   </article>
 </template>
@@ -56,13 +58,16 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-.button_container {
+.button-container-list {
   display: flex;
   flex-direction: row;
-  button {
-    margin: 20px;
-    // height: 60px;
-    // width: 210px;
+  flex-wrap: wrap;
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    height: 60px;
+    width: 210px;
   }
 }
 </style>
