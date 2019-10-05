@@ -26,7 +26,7 @@ button {
   font-family: "Source Code Pro";
   font-weight: 900;
   text-transform: uppercase;
-  font-size: 22px;  
+  font-size: 24px;
   color: hsla(210, 50%, 85%, 1);
 
   background-color: hsl(210, 80%, 42%);
@@ -46,6 +46,8 @@ button {
 // button:::after 是背后的细字
 .right:after, button::after {
   content: var(--content);
+  text-align: center;
+  line-height: 60px;
   width: 100%;
   height: 100%;
   padding: 40px 40px;
@@ -58,7 +60,7 @@ button {
 button::after{
   // 细字要和粗体重合
   font-weight: 200;
-  top: -30px;
+  top: -40px;
   left: -80px;
 } 
 
