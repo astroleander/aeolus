@@ -1,4 +1,4 @@
-<!-- @inspireby Kamil https://codepen.io/KamilDyrek/pen/aXebmO?editors=1100-->
+<!-- @inspireby Kamil https://codepen.io/KamilDyrek/pen/aXebmO?editors=1100 -->
 <template>
   <button :style="{'--content':`'${this.$slots.default[0].text || 'FlushButton'}'`}">
     <div class="left"></div>
