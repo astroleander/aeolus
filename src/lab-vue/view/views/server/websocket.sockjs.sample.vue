@@ -1,6 +1,6 @@
 <template>
   <article>
-    <div ref="chart" style="width: 600px;height:400px;"></div>
+    <div class="chart" ref="chart"></div>
   </article>
 </template>
 
@@ -31,16 +31,14 @@ export default {
         xAxis: {
           axisLine:{
             lineStyle:{
-              color: 'white',
-              width: 2,//这里是为了突出显示加上的，可以去掉
+              width: 2,
             }
           }
         },
         yAxis: {
           axisLine:{
             lineStyle:{
-              color:'white',
-              width:2,//这里是为了突出显示加上的，可以去掉
+              width:2,
             }
           }
         },
@@ -86,4 +84,8 @@ export default {
 </script>
 
 <style scoped lang='scss'>
+.chart {
+  width: 100vw;
+  height: 100vh;
+}
 </style>
