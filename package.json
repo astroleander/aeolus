@@ -4,13 +4,10 @@
   "description": "something not important",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "old-build": "webpack --mode production --config ./config/webpack.config.js",
-    "old-dev": "webpack --mode development --config ./config/webpack.config.js",
-    "old-dev-for-test-override": "webpack --mode development --config ./config/webpack.config.js ./src/main.js --output ./dist/override/main.js",
-    "old-start": "webpack-dev-server --mode development --open --config ./config/webpack.config.js",
     "dev": "webpack-dev-server --open --config ./config/webpack.dev.js",
-    "build": "webpack --config ./config/webpack.prod.js"
+    "build": "webpack --mode production --config ./config/webpack.prod.js",
+    "build-override": "webpack --mode development --config ./config/webpack.config.js ./src/main.js --output ./dist/override/main.js",
+    "server-socket": "node ./servers/websocket.sockjs.js"
   },
   "keywords": [],
   "author": "astroleander",
