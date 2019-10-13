@@ -265,7 +265,7 @@ module.exports = {
     }),
     new VueLoaderPlugin(),
     new BundleAnalyzerPlugin({
-      analyzerPort: 1989,
+      analyzerPort: 21453,
     })
   ]
 }

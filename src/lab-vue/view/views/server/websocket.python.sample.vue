@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import SockJS from 'sockjs-client'
+import io from 'socket.io-client'
 import echarts from 'echarts'
 
 export default {
@@ -62,22 +62,20 @@ export default {
       });
     },
     initSocket() {
-      this.ws = new SockJS('http://localhost:22000/ws');
-      this.ws.console = {
-        log: (witch, ...args) => {
-            console.log('[ws]',`[${witch}]`,...args)
-        }     
-      }
-      this.ws.onopen = e => {
-        this.ws.console.log('onopen', e)
-      }
-      this.ws.onmessage = e => {
-          this.ws.console.log('onmessage', e)
-          this.updateChart(e.data)
-      }
-      this.ws.onclose = e => {
-          this.ws.console.log('onclose', e)
-      }
+      console.log('[websocket][socket.io] initial');
+      const socket = io('http://127.0.0.1:22002/');
+
+      socket.on('connect', () => {
+        console.log('[websocket][socket.io] connected');
+        socket.emit('msg', 'hello you here')
+      })
+      socket.on('disconnect', () => {
+        console.log('[websocket][socket.io] disconnected');
+      })
+      socket.on('msg', (e) => {
+        console.log('[websocket][socket.io] msg arrived');
+        console.log(e);
+      })
     }
   },
 }
