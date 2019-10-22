@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
 export default class CommonLayout extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <article>
@@ -28,8 +31,4 @@ class FloatButton extends Component {
       </div>
     )
   }
-}
-
-const floating_button = {
-  
 }

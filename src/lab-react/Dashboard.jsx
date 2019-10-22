@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { HashRouter, Route, Link } from "react-router-dom";
 
 import Routers from '@r/router/view';
-
+import Functions from '@r/router/func';
 import './styles/nav.scss'
 
 import 'core-js'
@@ -15,22 +15,23 @@ export default class Dashboard extends Component {
       nav: null
     }
   }
-  async componentWillMount() {
-    let state = await import('#res/definitions.js');
-    this.setState({nav: state.entries})
-  }
+  /* componentWillMount has been renamed */
+  // async componentWillMount() {
+    // let state = await import('#res/definitions.js');
+    // this.setState({nav: state.entries})
+  // }
   componentDidMount() {
-    // import('#res/definitions.js').then(module => {
-    //   // 利用延时测试 skeleton
-    //   // setTimeout(() => {this.setState({nav: module.entries})}, 500);
-    //   this.setState({nav: module.entries})
-    // });
+    import('#res/definitions.js').then(module => {
+      // 利用延时测试 skeleton
+      // setTimeout(() => {this.setState({nav: module.entries})}, 500);
+      this.setState({nav: module.entries})
+    });
   }
   componentDidUpdate() {
   }
   render() {
     const nav = this.state.nav;
-    const renderedRouter = Routers.map((item, idx) => {
+    const renderedViewRouter = Routers.map((item, idx) => {
       return (
         // add link here
         <Link key={`${idx}`} to={item.path}>
@@ -38,13 +39,11 @@ export default class Dashboard extends Component {
         </Link>
       )
     })
-    const renderedRoute = Routers.map((item, idx) => {
+    const renderedAlgoRouter = Functions.map((item, idx) => {
       return (
-        <Route
-          key={idx}
-          path={item.path}
-          render={() => <h3>Please select {item.name} topic.</h3>}
-        />   
+        <Link key={`${idx}`} to={{pathname: item.path}}>
+          <li>{item.key}</li>
+        </Link>
       )
     });
     return (
@@ -52,7 +51,10 @@ export default class Dashboard extends Component {
       {this.Navigation(nav)}
       <article id='react-dashboard' className="dashboard">
         <HashRouter>
-            {renderedRouter}
+          {renderedViewRouter}
+        </HashRouter>
+        <HashRouter>
+          {renderedAlgoRouter}
         </HashRouter>
       </article>
       </>

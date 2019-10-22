@@ -3,7 +3,7 @@ import { HashRouter, Route, Link, Switch } from "react-router-dom";
 
 import NavLayout from './layouts/NavLayout'
 import CommonLayout from './layouts/CommonLayout';
-
+import AlgoLayout from './layouts/AlgoLayout';
 
 /**
  * webpack 入口脚本会在最后执行, 观察 F12 文档结构即可确认。
@@ -31,6 +31,10 @@ export default class AppReact extends Component {
             <Route
               path='/views'
               component={CommonLayout}
+            />
+            <Route
+              path='/algo'
+              component={AlgoLayout}
             />
             <Route
               path=''
