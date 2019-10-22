@@ -39,6 +39,8 @@ function dp(numRows) {
   return [array, newarr.length + array.length]
 }
 
-export {
-  dp, table
+module.exports = {
+  dp,
+  table,
+  inputs: [20]
 }

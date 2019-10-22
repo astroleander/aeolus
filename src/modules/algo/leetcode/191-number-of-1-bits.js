@@ -12,3 +12,7 @@ var hammingWeight = function(n) {
     return result
 };
 console.log(hammingWeight(1));
+module.exports = {
+    hammingWeight,
+    inputs: [1]
+}

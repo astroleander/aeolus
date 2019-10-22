@@ -12,6 +12,7 @@ const fib_table = function (N) {
   return table[N]
 }
 
-export default {
-  fib_table
+module.exports = {
+  fib_table,
+  inputs: [4]
 }

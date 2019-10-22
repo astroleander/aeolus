@@ -51,3 +51,8 @@ var romanToInt = function(s) {
 console.log('start')
 romanToInt('III')
 romanToInt('MCMXCIV')
+
+module.exports = {
+  romanToInt,
+  inputs: ['MCMXCIV']
+}

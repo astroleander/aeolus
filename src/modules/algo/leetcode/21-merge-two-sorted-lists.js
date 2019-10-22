@@ -45,3 +45,11 @@ var mergeTwoLists = function (l1, l2) {
 
   return head.next
 };
+
+module.exports = {
+  mergeTwoLists,
+  inputs: [
+    { val: 1, next: {val: 5, next: {val: 66, next: null}}},
+    { val: 2, next: {val: 4, next: {val: 71, next: null}}}
+  ]
+}

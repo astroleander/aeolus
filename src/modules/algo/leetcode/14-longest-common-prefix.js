@@ -27,3 +27,10 @@ longestCommonPrefix(["abcde", "", ""])
 longestCommonPrefix(["abcde"])
 longestCommonPrefix([])
 longestCommonPrefix(["abcde", "abcdd", "abcdwrihqwf", 'abcdaswqw'])
+longestCommonPrefix(["abcde", "abcdd", "abcdwrihqwf", 'abcdaswqw'])
+longestCommonPrefix(["abcde", "abcdd", "abcdwrihqwf", 'abcdaswqw'])
+
+module.exports = {
+    longestCommonPrefix,
+    inputs: [["abcde", "abcdd", "abcdwrihqwf", 'abcdaswqw']]
+}

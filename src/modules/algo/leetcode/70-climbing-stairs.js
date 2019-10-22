@@ -25,5 +25,6 @@ const climbStairs = function (n) {
 //   climbStairs
 // }
 module.exports = {
-  climbStairs
+  climbStairs,
+  inputs:[55]
 }

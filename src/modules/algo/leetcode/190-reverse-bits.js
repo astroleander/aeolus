@@ -16,3 +16,7 @@ var reverseBits = function(n) {
     return result;
 };
 console.log(reverseBits(2048))
+module.exports = {
+    reverseBits,
+    inputs: [2048]
+}

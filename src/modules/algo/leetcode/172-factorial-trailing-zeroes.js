@@ -7,3 +7,7 @@ var trailingZeroes = function(n) {
     return result
 }
 console.log(trailingZeroes(625));
+module.exports = {
+    trailingZeroes,
+    inputs: [625]
+}

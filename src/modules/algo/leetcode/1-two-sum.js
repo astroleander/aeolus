@@ -9,10 +9,12 @@ var twoSum = function (nums, target) {
       if (nums[i] + nums[j] === target) return [i, j]
     }
   }
+  return 'not found'
 };
 
-module.exports = { twoSum }
+var inputs = [[2, 7, 11, 15], 9]
+module.exports = { twoSum, inputs }
 
 console.log('[1][sample]');
 console.log(`twoSum([2, 7, 11, 15], 9)`);
-console.log(twoSum([2,7,11,15], 9));
+console.log('result:', twoSum([2,7,11,15], 9));

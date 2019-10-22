@@ -12,6 +12,10 @@
  */
 
 var addTwoNumbers = function (l1, l2) {
+   function ListNode(val) {
+     this.val = val;
+     this.next = null;
+   }
   let head = l1
   let isAdded = 0
 
@@ -37,10 +41,10 @@ var addTwoNumbers = function (l1, l2) {
   return head
 };
 
-console.log('[2][sample]');
-console.log(
-  `addTwoNumbers(
-    [{val}, {}, {}, {}], 
-    [{}, {}, {}, {}]
-  )`);
-console.log(twoSum([2,7,11,15], 9))
+module.exports = {
+  addTwoNumbers,
+  inputs: [
+    { val: 1, next: {val: 1, next: {val: 1, next: null}}},
+    { val: 2, next: {val: 2, next: {val: 1, next: null}}}
+  ]
+}

@@ -30,3 +30,10 @@ var maxLevelSum = function (root) {
   console.log(ret);
   return ret.reduce((max, v, vindex) => v > max[0] ? [v, vindex] : max, [0, 0])[1] + 1;
 };
+module.exports = {
+  maxLevelSum,
+  inputs: [
+    { val: 1, next: {val: 1, next: {val: 1, next: null}}},
+    { val: 2, next: {val: 2, next: {val: 1, next: null}}}
+  ]
+}

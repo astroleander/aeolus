@@ -49,3 +49,10 @@ let isValid = function (s) {
 
 let test = '()'
 console.log(isValid(test))
+
+module.exports = {
+  isValid,
+  inputs: [
+    '()'
+  ]
+}

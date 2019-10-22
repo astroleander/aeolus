@@ -18,3 +18,7 @@ var reverse = function(x) {
     result > 2147483647? 0: result
 };
 console.log(reverse(-321));
+module.exports = {
+  reverse,
+  inputs: [-400]
+}

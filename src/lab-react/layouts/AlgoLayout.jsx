@@ -56,13 +56,14 @@ export default class AlgoLayout extends React.Component {
     let f = this.state[key];
     return (
       <div>result:
-        {String(f(...this.state['inputs']))}
+        {JSON.stringify(f(...this.state['inputs']))}
       </div>
     )
   }
   handleArgChange(val, idx) {
     let newer = this.state['inputs'];
     if (this.state['inputs_type'][idx] === 'number') {
+      if (val === '-') return -0;
       newer[idx] = Number(val);
     } else {
       newer[idx] = val;
