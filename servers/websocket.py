@@ -15,11 +15,7 @@ thread_lock = Lock()
 def connected():
     print('[socket.io] connected')
 
-def threadFunc():
-    while(True):
-        print('[socket.io] send msg')
-        emit("msg", "Hello web")
-        socketio.sleep(3)
+
 
 @socketio.on("msg")
 def msg(msg):
