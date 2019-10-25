@@ -4,35 +4,35 @@ export default class AlgoLayout extends React.Component {
   constructor(props) {
     super(props);
     let pathname = this.props.location.pathname
-    this.state = {
-      path: pathname.substring(pathname.indexOf('/', 2))
-    }
-    import('@/modules/algo' + this.state.path).then(m => {
+    let path = pathname.substring(pathname.indexOf('/', 2))
+    import('@/modules/algo' + path).then(m => {
+      let state = { path }
       // surrender to jijitsu
       Object.keys(m.default).forEach(e => {
-        this.setState({
-          [e]: m.default[e]
-        })
+        state[e] = m.default[e]
         if (e !== 'inputs') {
-          this.setState({
-            func_key: e
-          })
+          state['func_key'] = e
         } else {
-          this.setState({
-            inputs_type: [...m.default[e].map(e => typeof e)]
-          })
+          state['inputs_type'] = [...m.default[e].map(e => typeof e)]
         }
       })
+      state['done'] = true;
+      this.setState(state);
     })
   }
+  // 在参数加载完成之前不进行渲染，即不执行 render 中的 f 函数，避免莫名其妙的错误
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log({state: this.state, nextState})
+    return nextState['done']
+  }
   render() {
-    // console.log(this.props.func(...this.props.inputs))
-    let key = this.state.func_key
+    console.log(this.state)
+    let key = this.state && this.state['func_key'] || undefined
     return (
       <>
       {
         (<div>
-          <pre>{String(this.state[key])}</pre>
+          <pre>{key && String(this.state[key])}</pre>
           {key && this.state[key] && this.state['inputs'] && this.state['inputs_type'] && this.renderArgs()}
           {key && this.state[key] && this.state['inputs'] && this.renderResults(key)}
         </div>)
