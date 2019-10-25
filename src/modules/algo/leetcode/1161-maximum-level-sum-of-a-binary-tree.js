@@ -33,7 +33,59 @@ var maxLevelSum = function (root) {
 module.exports = {
   maxLevelSum,
   inputs: [
-    { val: 1, next: {val: 1, next: {val: 1, next: null}}},
-    { val: 2, next: {val: 2, next: {val: 1, next: null}}}
+    { 
+      val: 1, 
+      left: { 
+        val: 7, 
+        left: {
+          val: 1,
+          left: null,
+          right: null,
+        },
+        right: { 
+          val: 3, 
+          left: {
+            val: 10,
+            left: null,
+            right: null
+          }, 
+          right: null  
+        }
+      },
+      right: {
+        val: 1, 
+        left: {},
+        right: { val: 1, left: null, right: null }
+      }
+    },
+    { 
+      val: 2, 
+      left: { 
+        val: 7, 
+        left: {
+          val: 1,
+            left: { val: 1, left: null, right: null },
+            right: { val: 1, left: null, right: null },
+        },
+        right: { 
+          val: 3, 
+          left: {
+            val: 10,
+            left: null,
+            right: null
+          }, 
+          right: null  
+        }
+      },
+      right: {
+        val: 1, 
+        left: {
+          val: 1,
+          left: { val: 1, left: null, right: null },
+          right: { val: 1, left: null, right: null },
+        },
+        right: { val: 1, left: null, right: null }
+      }
+    }
   ]
 }
