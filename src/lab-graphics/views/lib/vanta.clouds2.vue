@@ -1,7 +1,7 @@
 <template>
   <article class="fullscreen">
     <section class="fullscreen flex-container" id="clouds">
-        <button class="button" @click="entry">
+        <button class="aeolus-button" @click="entry">
           Entrance
           <div id="progress-mask" class="progress disabled">
             <div id="progress-first" class="disabled progress progress-first"></div>
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     async entry(e) {
-      let ele = document.querySelector('.button')
+      let ele = document.querySelector('.aeolus-button')
       ele.style['border-radius'] = '50%'
       ele.style.padding = '0px'
       ele.style.background = '#FB8'
@@ -119,7 +119,7 @@ export default {
   left: 0%;
 }
 
-.button {
+.aeolus-button {
   position: relative;
   transition: all 0.6s, box-shadow 0s;
   height: 80px;
