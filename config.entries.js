@@ -40,19 +40,19 @@ const config = {
       chunks: ['config', 'js']
     }
   }
-}
+};
 
 module.exports = {
   htmlWebPackPlugins: () => {
     return Object.entries(config).map(item => {
       return item[1].htmlwebpackplugin;
-    })
+    });
   },
   entries: () => {
-    let obj = {}    
+    let obj = {};
     Object.entries(config).map(item => {
       obj[item[0]] = item[1].entry;
-    })
+    });
     return obj;
   },
   path: () => {
@@ -60,7 +60,7 @@ module.exports = {
       return [ 
         item[0],
         item[1].htmlwebpackplugin.filename.replace('.', '')
-      ]
-    })
+      ];
+    });
   }
-} 
+};
