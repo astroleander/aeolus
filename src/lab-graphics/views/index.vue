@@ -13,7 +13,7 @@
         <li><template v-for="(path, idx) in view.meta.paths">
             {{ 
               idx === view.meta.paths.length - 1 ? 
-                view.meta.name === 'index' ? view.meta.paths[idx - 1] + ' Sample' : view.meta.name
+                view.meta.name === 'index' ? view.meta.paths[idx - 1] + ' sample' : view.meta.name
                 : 
                 '[' + path + ']'
             }}
