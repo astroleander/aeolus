@@ -77,7 +77,7 @@ export default {
       for (const idx in shapes) {
         item = shapes[idx];
         const padding = 50;
-        const depth = (0.2 + 0.8 * Math.random()) * 1000;
+        const depth = (0.2 + 0.8 * Math.random()) * 3000;
         const tmp = new THREE.Mesh(
           new THREE.BoxBufferGeometry(
             item.width - padding, 
