@@ -1,3 +1,3 @@
-import '#res/styles/index.scss'
+import '#res/styles/index.scss';
 import '#res/main.css';
-import "@/modules/utils/global-bash"
+import "@/modules/utils/global-bash";

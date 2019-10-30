@@ -45,15 +45,15 @@ const config = {
 module.exports = {
   htmlWebPackPlugins: () => {
     return Object.entries(config).map(item => {
-      return item[1].htmlwebpackplugin
+      return item[1].htmlwebpackplugin;
     })
   },
   entries: () => {
     let obj = {}    
     Object.entries(config).map(item => {
-      obj[item[0]] = item[1].entry
+      obj[item[0]] = item[1].entry;
     })
-    return obj
+    return obj;
   },
   path: () => {
     return Object.entries(config).map(item => {

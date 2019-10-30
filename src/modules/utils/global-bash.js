@@ -1,1 +1,1 @@
-import './register_key_back_listener'
+import './register_key_back_listener';
