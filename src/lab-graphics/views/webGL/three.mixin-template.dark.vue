@@ -9,7 +9,7 @@ import mixin from '@/modules/utils/mixin.template.three.dark.js'
 export default {
   mixins: [mixin],
   mounted() {
-    this.setRenderTarget(document.getElementById('container'))
+    this.setRenderTarget(document.getElementById('container'));
   }
 }
 </script>
