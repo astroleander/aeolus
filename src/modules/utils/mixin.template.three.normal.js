@@ -29,7 +29,7 @@ export const threeMixin = {
       this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true});
       this.renderer.setSize(width, height);
       this.renderer.setPixelRatio(window.devicePixelRatio);
-      this.renderer.shadowMap.enable = true;
+      this.renderer.shadowMap.enabled = true;
       /** [Camera] */
       let fov = 60, aspect = width / height, near = 1, far = 10000;
       this.camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
